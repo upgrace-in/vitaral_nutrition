@@ -1,0 +1,704 @@
+{% load static %}
+<html lang="en">
+    <head>
+    <title>
+        Vitaral Nutrition - Healthy Cookware Raffle Competition.
+    </title>
+    <meta charset="UTF-8">
+    <meta name="description" content="When you enter our Vitaral Nutrition Healthy cookware raffle competition, you have a 1 in 300,000 chance of winning the top pf the range 316Ti surgical steel and titanium Executive Chef Set. With over 65 million people is in the UK between 18 and 65 there isn’t much room for everyone to enter so at £11 what is there to wait for.  Enter now.  https://competition.vitaral.co.uk.
+    Answer health based questions and submit your answers. Simple.  Read the scenario and answer all the questions and learn the benefits of the product to help change your life. To Change Your Health, Is To Change Your Cookware. To Change your cookware is to change your life and lifestyle cooking methods.  Ditch those diet plans.  Lose weight without losing food.   No Oil No Boil No Steam. Resistance Is Futile.
+    Fight against dietary disease, Diabetes, High Blood Pressure, Cancer, Heart Disease, High Cholesterol, Alzheimer's, Stroke, IBS, Obesity, Allergies.   Step 1. Assess at your cookware.  Step 2. Revised how you prepare your meals.  Step 3. Take the QQ online today.
+    Waterless cookware brands namely 316Ti surgical steel and titanium are the healthiest stainless steel cookware, the best induction cookware, probably the only chemical free ‘pots and pans’ as we know it, and most important vacumatic cookware for your health today.  Cooking your veg like carrots, peas and parsnip, you get the maximum nutrition and the natural sweetness.
+    This is no ordinary cookware.  When you take a look, a careful look, a closer personal encounter with both hands; you’ll see and feel it’s… something remarkable, high quality and in a league of its own.
+    It’s not just a superb waterless and greaseless cookery collection, or state of the art steam less cookware, it’s the answer to your health to look better, feel better and live longer.  To learn more about dietary illness visit our blog">
+    <meta name="keywords" content="what is waterless cookware,
+    waterless cookware brands,
+    waterless milk warmer,
+    healthiest stainless steel cookware,
+    pro health ultra cookware,
+    healthy stainless steel cookware,
+    authentic master cookware,
+    best organic cookware,
+    healthy pots and pans for cooking,
+    healthy cooking cookware,
+    chemical free pots and pans,
+    vacumatic cookware,
+    316ti surgical stainless steel cookware,
+    waterless cookware,
+    316ti stainless steel cookware,
+    healthy cooking pots and pans,
+    healthy non stick pan,
+    best healthy cookware,
+    316 titanium stainless steel cookware,
+    greenpan cookware,
+    safest pots and pans,
+    safest pans to cook with,
+    healthy cookware uk,
+    safest cookware,
+    316 titanium stainless steel cookware price*,
+    healthy cookware,
+    healthiest cookware,
+    best stainless steel cookware,
+    best induction cookware,
+    best cookware material,
+    healthiest stainless steel cookware brands,
+    best green cookware,
+    316ti Competition,
+    cookware competition">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'src/imgs/Competition_2020.png' %}">
+    <link rel="stylesheet" href="{% static 'src/fa/css/all.min.css' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'src/animate.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lora|Lobster|Josefin Sans|Roboto|Dancing Script|Abril Fatface|&display=swap" rel="stylesheet">
+    <script src="https://www.paypal.com/sdk/js?client-id=Ad6ZrPRT0U0SH4pZk0WCSOo74iU2VckVK1CVYEhj4dqwypaE2drPk8vOyIRpg2jGN0qy-tsrw6L9JLwg&currency=GBP"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        video {
+            width: 100%;
+            height: auto;
+        }
+        .bg_top{
+            width: 100%;
+            height: 800px;
+            background-image: url({% static 'src/imgs/How It Works-Coggs-The Raffle Competition.png' %});
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        body{
+
+            font-family: 'Josefin Sans';
+            color: rgba(255, 255, 255, 0.966);
+        }
+        @media(max-width: 1100px){
+            .logo{
+                width: 250px !important;
+                height: 200px !important;
+            }
+            #nav{
+                height: 150px !important;
+            }
+        }
+
+        .social_icons{
+            border-radius: 5px;
+        }
+        .sc{
+            color: white;
+            text-shadow: 2px 2px 2px black;
+            font-size: 1rem;
+        }
+        .sc:hover{
+            color: rgb(228, 228, 228);
+            transition: ease 0.5s;
+            font-size: 1.5rem;
+        }
+        .navbar{
+            height: 100px;
+        }
+        .nav-link, .nav-link:hover{
+            color: white;
+        }
+        .nav-link{
+            font-family: 'Josefin Sans' !important;
+        }
+        li {
+            font-family: 'lora';
+            font-weight: 700;
+            margin: 2px;
+            list-style-type: none;
+        }
+        li span {
+            display: block;
+            font-size: 2rem;
+        }
+        .org{
+            color: rgb(255, 123, 0);
+        }
+        .up_icon{
+            border-radius: 100px;
+            background: white !important;
+        }
+        .divider{
+            margin-top: 20px;
+            height: 370px;
+            border-right: 2px solid black;
+        }
+        .entries_val{
+            padding: 10px 10px 18px 10px;
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+        }
+        .entries_input, .entries_input:focus{
+            border: none;
+            font-size: 3rem;
+            background: transparent;
+            width: 100%;
+            height: 100%;
+            outline: none;
+        }
+        .decrease_entries:hover, .increase_entries:hover{
+            transition: ease 0.5s;
+            color: orangered;
+        }
+         .enter_now_btn{
+             top: 40px;
+            background: white !important;
+            border: 2px solid black;
+            padding: 15px 70px;
+             color: black;
+             font-size: 2rem;
+            border-radius: 50px;
+            outline: 0;
+        }
+        .enter_now_btn:hover{
+            outline: 0;
+            color: grey;
+            transition: ease 1s;
+            border: 2px solid #FF0000 !important;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+        }
+        .enter_now_btn:focus {
+            border-color: #FF0000 !important;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+        }
+        @media(max-width: 1160px){
+             .floating_entry_field{
+                position: relative !important;
+                top: 0 !important;
+                left: 0 !important;
+            }
+            .ticket_logo{
+                display: none;
+            }
+            .entries_val{
+                padding: 10px 10px 15px 10px;
+                width: 100px;
+                height: 80px;
+                border: 2px solid black;
+                border-radius: 30px;
+            }
+            .arrows_field{
+                padding: 20px !important;
+                margin: 0 0 0 0 !important;
+            }
+            .veg_pic{
+                text-align: center !important;
+                width: 900px !important;
+                height: 200px !important;
+            }
+        }
+        @media(max-width: 770px){
+            .pls_txt{
+                font-size: 0.9em !important;
+            }
+            #nav{
+                top: -90px !important;
+                height: 220px !important;
+            }
+            .middle_text{
+                text-align: center !important;
+                width: auto !important;
+            }
+            .logo{
+                width: 120px !important;
+                height: 150px !important;
+            }
+            .entries_val{
+                border-radius: 20px !important;
+            }
+            .floating_entry_field{
+                position: relative !important;
+                top: 0 !important;
+                left: 0 !important;
+            }
+            .pay_container{
+                top: 140px !important;
+            }
+            .veg_pic{
+                display: none;
+            }
+            .md-4{
+                margin-top: 0px !important;
+            }
+            .md-text-2{
+                text-align: center !important;
+                font-size: 2em !important;
+            }
+        }
+        @media(max-width: 600px){
+            .pay_container{
+                top: 140px !important;
+            }
+            .veg_pic{
+                display: none;
+            }
+            .md-4{
+                margin-top: 300px !important;
+            }
+            .md-text-2{
+                text-align: center !important;
+                font-size: 2em !important;
+            }
+            .logo{
+                width: auto !important;
+                height: auto !important;
+            }
+            #nav{
+                height: auto !important;
+            }
+            .middle_text{
+                text-align: center !important;
+                width: auto !important;
+            }
+            #nav{
+                top: 0 !important;
+                height: auto !important;
+            }
+            .divider{
+                display: none !important;
+            }
+            .entries_val{
+                padding: 12px 12px 18px 12px;
+                width: 120px;
+                height: 100px;
+                border: 2px solid black;
+                border-radius: 30px;
+            }
+            .floating_entry_field{
+                position: relative !important;
+                top: 10px !important;
+                left: 0 !important;
+            }
+
+        }
+        .floating_entry_field{
+            position: absolute; top: 100px; left: 250px; z-index: 3;
+        }
+        .arrows_field{
+            padding: 10px !important;
+            margin: 150px 0 0 0;
+        }
+        .close_pay:hover{
+            transition: ease 0.5s;
+            color: red;
+        }
+        div.overlay{
+            z-index: 3;
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(8px);
+            color: #fff;
+        }
+        .change_entry:hover{
+            font-weight: 700;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="overlay"></div>
+        <nav id="nav" class="col-md-12 animated fadeIn navbar navbar-expand-lg" style="background-color: black;">
+            <div class="container" style="height: 300px">
+                <div class="mx-auto col-md-2 text-center" style="width: 150px; height: 150px;">
+                    <img alt="" src="{% static 'src/imgs/vital_health_logo_dark.png' %}" style="width: 100%; height: 100%; display: block;"/>
+                </div>
+                <a class="nav-link col-md-7 middle_text mx-auto text-center" href="{% url 'index' %}"><h1 class="middle_text_inner">316Ti Registration</h1></a>
+                <div class="col-md-3 logo mx-auto text-center" style="width: 300px; height: 250px; top: 65px">
+                    <img alt="" src="{% static 'src/imgs/Competition_2020.png' %}" style="width: 100%; height: 100%; display: block;"/>
+                </div>
+            </div>
+        </nav>
+        <div class="col-md-12 mx-auto text-center">
+            <div class="col-md-10">
+                <div class="questions_container">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 pay_container" style="position: fixed; z-index: 4; color: black; display: none">
+            <div class="col mx-auto text-center pad_ipad" style="width: 300px; padding: 20px; background: white; border: 2px solid blue; border-radius: 20px">
+                <div style="font-size: 2rem;" class="mr-auto text-right close_pay"><i class="fa fa-times"></i></div>
+                <h1>Pay&nbsp;&pound;<span style="font-weight: 700" class="get_price"></span></h1>
+                <h3>As Per Your Selected Entries</h3>
+               <div id="paypal-button-container">
+                   <br>
+               </div>
+            </div>
+        </div>
+        <div class="up_icon" style="position: fixed; z-index: 3; right: 8px; bottom: 8px;"><a href="#nav"><i style="font-size: 3rem;" class="org fas fa-arrow-circle-up"></i></a></div>
+        <br><br>
+
+            {% if message %}
+                <style>
+                    @media(max-width: 800px){
+                        .logo{
+                            display: none !important;
+                        }
+                    }
+                </style>
+                <div class="col-md-12 mx-auto text-center pay_container2" style="top: 10px;">
+                    <h1 class="col-md-5 mx-auto text-center" style="font-size: 2rem; color: black; font-weight: 700;">{{ message }}</h1><br>
+                    <div class="col mx-auto text-center pad_ipad2" style="width: 300px; padding: 20px; background: white; border: 2px solid blue; border-radius: 20px; color: black;">
+                        <h1>Pay&nbsp;&pound;<span style="font-weight: 700" class="get_price"></span></h1>
+                        <h3>As Per Your Selected Entries</h3>
+                        <div class="row new_entry_con" style="padding: 10px; display: none;">{% csrf_token %}
+                            <input value="{{ entries }}" class="col-md-8 form-control new_entry" placeholder="max 15"/>&nbsp;
+                            <button onclick="change_entry();" class="col btn btn-primary">Set</button>
+                        </div>
+                       <div id="paypal-button-container2">
+                           <br>
+                       </div>
+                    </div>
+                    <h4 onclick="show_entry();" class="change_entry" style="margin-top: 20px; color: black;">Want To Change Entries ?</h4>
+                </div>
+                <script>
+                function show_entry() {
+                    $('.new_entry_con').show();
+                }
+                function change_entry(){
+                    var new_entry = $('.new_entry').val();
+                    var int = parseInt(new_entry)*11;
+                    $('.get_price').html(int);
+                    return int;
+                }
+                function get_p(){
+                    var int = ({{ entries }})*11;
+                    $('.get_price').html(int);
+                    return int;
+                }
+                $( document ).ready(function() {
+                    get_p();
+
+                });
+                function new_entry() {
+                    var entries = $('.new_entry').val();
+                    if (parseInt(entries) >= 15){
+                        return 15;
+                    }
+                    else{
+                        return parseInt(entries);
+                    }
+                }
+                paypal.Buttons({
+                        style:{
+                          size: 'small',
+                          color: 'blue',
+                          shape: 'rect',
+                          label: 'pay',
+                          layout: 'horizontal',
+                          height: 40,
+                        },
+                        createOrder: function(data, actions) {
+                          return actions.order.create({
+                            purchase_units: [{
+                              amount: {
+                                value: (new_entry())*11
+                              }
+                            }]
+                          });
+                        },
+                    onApprove: function(data, actions) {
+                          return actions.order.capture().then(function(details) {
+                                $.ajax({
+                                   url: {% url 'payment_data' %},
+                                   type: 'POST',
+                                   data: {
+                                       p_id: '{{ p_id }}',
+                                       payer_mail: details['payer']['email_address'],
+                                       payer_id: details['payer']['payer_id'],
+                                       c_time: details['create_time'],
+                                       order_id: details['id'],
+                                       payer_country_code: details['payer']['address']['country_code'],
+                                       status: details['status'],
+                                       entries: parseInt(new_entry()),
+                                       csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                                   },
+                                   success: function (data) {
+                                     location.replace("{% url 'register_here' %}");
+                                     window.scrollTo(0,0);
+                                   },
+                                   error: function (error) {
+                                     console.log(error);
+                                   }
+                                });
+                          });
+                        }
+                    }).render('#paypal-button-container2');
+                </script>
+            {% else %}
+                <div class="main_con animated fadeIn md-4 container mr-auto text-left" style="color: black">
+                <div class="md-text-2 mr-auto text-left" style="font-size: 3rem; font-weight: 700;">
+                    <p>WIN&nbsp;WIN&nbsp;<wbr>WIN&nbsp;<sup>THIS</sup><wbr>&nbsp;AMAZING</p>
+                </div>
+                <h2 class="md-text-2" style="font-size: 1.93rem; font-weight: 500;">316Ti SURGICAL STEEL & TITANIUM EXECUTIVE CHEF SET</h2>
+                <div class="mr-auto text-center">
+
+                </div>
+                <form class="main_form col-md-12 mx-auto text-center">{% csrf_token %}
+                <div class="mx-auto text-center row">
+                    <div class="col-md-6">
+                        <div style="padding: 30px;">
+                            <div class="form-group mr-auto text-left">
+                                <label for="id_fname">First Name</label>
+                                <input required type="text" id="id_fname" name="fname" class="form-control"/>
+                            </div>
+                            <div class="form-group mr-auto text-left">
+                                <label for="id_surname">Surname</label>
+                                <input required type="text" id="id_surname" name="surname" class="form-control"/>
+                            </div>
+                            <div class="form-group mr-auto text-left">
+                                <label for="id_email">Email Address</label>
+                                <input required type="email" id="id_email" name="mail_id" class="form-control"/>
+                            </div>
+                            <div class="form-group mr-auto text-left">
+                              <label for="sel1">What Region Do You live?</label>
+                              <select required class="region form-control" id="sel1" name="region">
+                                <option>East of England</option>
+                                <option>East Midlands</option>
+                                <option>Greater London</option>
+                                <option>North East</option>
+                                <option>Northern Ireland</option>
+                                <option>North West</option>
+                                <option>Scotland</option>
+                                <option>South East</option>
+                                <option>South West</option>
+                                <option>Wales</option>
+                                <option>West Midlands</option>
+                                <option>Yorkshire and the Humber</option>
+
+                              </select>
+                            </div>
+                            <div class="form-group mx-auto text-center">
+                                <div class="g-recaptcha" data-sitekey="6Lfum_YUAAAAAD-rGm5Oh5Ysh1Whg1AG9Ca09uVb"></div>
+                            </div>
+
+                        </div><br><br>
+                        <div class="veg_pic" style="width: 600px; height: 200px;">
+                            <img alt="" src="{% static 'src/imgs/Email LOGO.jpg' %}" style="max-width: 100%; height: 100%; display: block">
+                        </div>
+                    </div><br><br>
+                    <div class="divider"></div>
+                    <div class="col-md-5 mx-auto text-center" style="padding: 20px">
+                        <div class="mx-auto text-center">
+                            <h4 style="font-weight: 700">HEALTH QUESTIONS</h4><br>
+                            <h6 class="text-left">Are you trying to eat healthier</h6>
+                            <div class="row col-md-3">
+                                <div class="form-check mx-auto text-center">
+                                    <input value="1" class="eat_healthy_yes form-check-input check_my" type="checkbox" id="gridCheck1">
+                                    <label class="form-check-label" for="gridCheck1">
+                                      Yes
+                                    </label>
+                                </div>
+                                <div class="form-check mx-auto text-center">
+                                    <input value="1" class="eat_healthy_no form-check-input check_my" type="checkbox" id="gridCheck2">
+                                    <label class="form-check-label" for="gridCheck2">
+                                      No
+                                    </label>
+                                </div>
+                            </div>
+                            <p class="mr-auto text-left pls_txt" style="font-size: 1.1rem;">Please select the number of entire's in the raffle
+                            you would like to purchase. Each entry is equal to 1 question,
+                                1 question is equal to <span style="font-size: 1.3rem; font-weight: 900;">&#8356;11</span>, the a maximum entries is <span style="font-size: 1.3rem; font-weight: 900;">15</span>.</p>
+                            <div class="col-md-12">
+                                <div class="col-md-12 ticket_logo mx-auto text-center" style="width: 400px; height: 300px;">
+                                    <img alt="" src="{% static 'src/imgs/Vitaral Nutrition - 316Ti - Raffle Competition Ticket Counter .jpg' %}" style="width: 100%; height: 100%; display: block;"/>
+                                </div>
+                                <div class="row floating_entry_field">
+                                        <div class="form-group entries_val text-center mx-auto" aria-valuemax="15">
+                                            <label for="entry_field"></label>
+                                            <input required id="entry_field" name="entries" value="15" maxlength="2" aria-valuemax="15" max="15" type="text" class="text-center mx-auto entries_input"/>
+                                        </div>
+                                        <div class="row arrows_field" style="padding: 20px;">
+                                            <div class="col decrease_entries" style="padding: 10px">
+                                                <i style="font-size: 2rem" class="fas fa-arrow-left"></i>
+                                            </div>
+                                            <div class="divider" style="height: 40px; margin-top: 5px;"></div>
+                                            <div class="col increase_entries" style="padding: 10px">
+                                                <i style="font-size: 2rem" class="fas fa-arrow-right"></i>
+                                            </div>
+                                        </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+                 <div class="container text-center mx-auto" style="margin-top: 30px;">
+                        <div class="row">
+                            <div class="form-check mr-auto text-left">
+                                <input required value="1" name="agree" class="agree form-check-input check_my" type="checkbox" id="gridCheck3">
+                                <label class="form-check-label" for="gridCheck3">
+                                  I understand and agree that I am entering a health based competition to win a High-end 316Ti Surgical Steel and Titanium Executive Chef Cookware Set.  Better known as the Executive Set with a cost price of £20,395 by the piece.  Each entry is charged at £11.  If fewer than 4,500 tickets sold by closing date, a cash prize alternative will be given. Cash prize will be 25% of total ticket sales, excluding transaction fees.  I have read the T&Cs and exclusions that apply.
+                                </label>
+                            </div>
+                                <button type="submit" class="mx-auto text-center enter_now_btn next-btn btn btn-dark" style="margin-top: 30px; background-color: orangered">NEXT</button>
+                        </div><br>
+                    </div>
+            </form>
+        </div><br><br><br>
+
+
+    <script>
+        function close_it(){
+                $('.overlay').removeClass('animated fadeInLeft');
+                $('.pay_container').removeClass('animated fadeInLeft');
+                $('.overlay').addClass('animated fadeOutLeft');
+                $('.pay_container').addClass('animated fadeOutLeft');
+            }
+        $('.close_pay').on('click', function () {
+            close_it();
+        });
+        function eating_status() {
+            var yes = $('#gridCheck1').val();
+            if (parseInt(yes) === 1){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        }
+        var entries = [];
+        $('.main_form').on('submit', function (e) {
+            var en = $('#entry_field').val();
+            entries.push(en);
+            $('.get_price').html('');
+            $('.get_price').html(parseInt(entries[0])*11);
+            var g = $('.get_price').text();
+            e.preventDefault();
+            $.ajax({
+               url: {% url 'participators_details' %},
+               type: 'POST',
+               data: {
+                   fname: $('#id_fname').val(),
+                   surname: $('#id_surname').val(),
+                   mail_id: $('#id_email').val(),
+                   region: $('.region').val(),
+                   agree: $('.agree').val(),
+                   entries: parseInt(en),
+                   eating_healthier: eating_status(),
+                   csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+               },
+               success: function (data) {
+                    window.scrollTo(0,0);
+                    $('.overlay').removeClass('animated fadeOutLeft');
+                    $('.pay_container').removeClass('animated fadeOutLeft');
+                    setTimeout(function () {
+                        $('.overlay').show();
+                        $('.pay_container').show();
+                    }, 1);
+                    setTimeout(function () {
+                        $('.overlay').addClass('animated fadeInLeft');
+                        $('.pay_container').addClass('animated fadeInLeft');
+                    }, 2);
+               },
+               error: function (error) {
+                 console.log(error);
+               }
+            });
+        });
+            paypal.Buttons({
+                style:{
+                  size: 'small',
+                  color: 'blue',
+                  shape: 'rect',
+                  label: 'pay',
+                  layout: 'horizontal',
+                  height: 40,
+                },
+                createOrder: function(data, actions) {
+                  return actions.order.create({
+                    purchase_units: [{
+                      amount: {
+                        value: parseInt(entries[0])*11
+                      }
+                    }]
+                  });
+                },
+                onApprove: function(data, actions) {
+              return actions.order.capture().then(function(details) {
+                    close_it();
+                    $.ajax({
+                       url: {% url 'payment_data' %},
+                       type: 'POST',
+                       data: {
+                           payer_mail: details['payer']['email_address'],
+                           payer_id: details['payer']['payer_id'],
+                           c_time: details['create_time'],
+                           order_id: details['id'],
+                           entries: (entries[0]),
+                           payer_country_code: details['payer']['address']['country_code'],
+                           status: details['status'],
+                           csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                       },
+                       success: function (data) {
+                         location.replace("{% url 'register_here' %}");
+                         window.scrollTo(0,0);
+                       },
+                       error: function (error) {
+                         console.log(error);
+                       }
+                    });
+              });
+            }
+            }).render('#paypal-button-container');
+        </script>
+        <script>
+            var entry_field_val = $('#entry_field');
+            let i_f = $('.increase_entries');
+            let d_f = $('.decrease_entries');
+            function ind_it(ev) {
+                entry_field_val.val('');
+                entry_field_val.val(ev);
+            }
+            i_f.click(function () {
+                if (entry_field_val.val() == 15){
+                    let ev = 1;
+                    ind_it(ev);
+                }
+                else if(entry_field_val.val() == ''){
+                    let ev = 1;
+                    ind_it(ev);
+                }
+                else{
+                    let ev = parseInt(entry_field_val.val()) + 1;
+                    ind_it(ev);
+                }
+            });
+            d_f.click(function () {
+                if (entry_field_val.val() == 1){
+                    let ev = 15;
+                    ind_it(ev);
+                }
+                else if(entry_field_val.val() == ''){
+                    let ev = 1;
+                    ind_it(ev);
+                }
+                else{
+                    let ev = parseInt(entry_field_val.val()) - 1;
+                    ind_it(ev);
+                }
+            });
+            $('#gridCheck1').click(function () {
+                $('#gridCheck2').prop("checked", false);
+                $('#gridCheck2').val(0);
+                $(this).val(1);
+            });
+            $('#gridCheck2').click(function () {
+                $('#gridCheck1').prop("checked", false);
+                $('#gridCheck1').val(0);
+                $(this).val(1);
+            });
+        </script>
+{% endif %}
+</body>
+</html>

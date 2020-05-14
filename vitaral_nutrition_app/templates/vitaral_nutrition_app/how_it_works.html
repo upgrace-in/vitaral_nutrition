@@ -1,0 +1,113 @@
+{% extends 'vitaral_nutrition_app/base.html' %}
+{% load static %}
+{% block navbar %}
+    <style>
+    .bg_how_it_works{
+        background-color: black;
+        {#background-image: url("{% static 'src/imgs/how_it_works_bg.png' %}");#}
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .bg_top{
+        background: none !important;
+    }
+    body{
+        background: white !important;
+    }
+    .enter_now_btn{
+        background: black !important;
+        border: 2px solid white;
+        padding: 15px 70px;
+        border-radius: 50px;
+        outline: 0;
+    }
+    .enter_now_btn3{
+        background: black !important;
+        border: 2px solid orangered;
+        padding: 15px 70px;
+        border-radius: 50px;
+        outline: 0;
+    }
+    .enter_now_btn:hover{
+        outline: 0;
+        transition: ease 1s;
+        border: 2px solid #FF0000 !important;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+    }
+    .enter_now_btn:focus {
+        border-color: #FF0000 !important;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+    }
+    @media(max-width: 700px){
+        .enter_now_btn2{
+            top: 0px !important;
+        }
+        .last_foot_img{
+            margin-top: 10px !important;
+        }
+        .setting_img{
+            padding: 0px !important;
+        }
+    }
+    </style>
+    <script>
+        active_class('.how_it_works');
+    </script>
+        <div class="animated fadeIn mx-auto text-center bg_how_it_works col-md-12">
+            <div class="row" style="background: rgba(0, 0, 0, 0.5); padding: 30px" >
+                <img alt="" style="padding: 70px" class="setting_img col-md-6 col-sm-12" src="{% static 'src/imgs/how_it_works_bg.png' %}" /><br>
+                <div class="col-md-6 col-sm-12 mr-auto text-left"  style="font-size: 18px; color:white">
+                    <br><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vitaral Nutrition is offering people a chance to win the very best organic cookware in the world. The healthiest Stainless steel and titanium Executive Chef Set. In order to enter you need to fill in the entry form, select the amount of entries you want to purchase, make the payment and then answer health base skill question to complete your entry.</p><br>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only successful entries will be entered into the prize draw. We cannot disclose if your answer is right or wrong, this is to make sure we keep it as fair as possible for all entrants.</p><br>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The contest is open to residents In England, Scotland and Wales. It will run for six months starting on 15/06/2020 and finishing on 15/12/2020. There will be no extensions to the competition. At the end of the six months the draw will be carried out by up to three impartial third party delegates. We will contact the winner to tell them of their good fortune and arrange delivery and presentation!</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What could you win? It depends on how many tickets we sell. If we do not receive 4,500 paid entries by the closing date, the prize will not be the Executive Chef Set but a cash prize. The cash prize will be 25% of the total amount of payments received less the transaction fees.</p>
+                </div>
+            </div>
+        </div>
+        {# Video #}
+        <div class="animated fadeIn col-md-12 mx-auto text-center" id="section2" style="padding: 50px;">
+            <div class="embed-responsive embed-responsive-16by9">
+                <video controls autoplay>
+                    <source class="embed-responsive-item" src="{% static 'src/vid/316Ti Raffle Competition - How It Works.mp4' %}" type="video/mp4">
+                </video>
+              </div>
+            <br><a href="{% url 'register_here' %}"><button class="btn btn-primary mx-auto text-center enter_now_btn3">ENTER NOW</button></a><br>
+        </div>
+        {# Boy Running #}
+        <div class="animated fadeIn mx-auto text-center col-md-12">
+            <div class="row" style="padding: 30px" >
+                <img alt="" class="col-md-6 col-sm-12" src="{% static 'src/imgs/man-wearing-white-sweater-and-black-shorts-about-to-run-the-Vitaral Nutrition-Cookware Raffle-Competition.png' %}" style="height: 400px" /><br>
+                <div class="col-md-6 col-sm-12 mx-auto text-center"  style="font-size: 30px; font-weight: 700; color: black">
+                    <br><br><p>LET'S GET GOING</p>
+                    <p>Hurry, don't be the last one</p>
+                </div>
+            </div>
+        </div>
+        {# Girl With Notes #}
+        <div class="animated fadeIn mx-auto text-center col-md-12">
+            <div class="row" style="padding: 30px;">
+                <div class="col-md-6 col-sm-12 mr-auto text-left" style="font-size: 20px; color: black;">
+                    <br><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the event that we do not receive 4,500 paid entries by the Closing Date, the prize will not be the Prize but will be a cash prize which will be 25%* of the total amount of Payments received less the transaction fees.</p><br>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*The 25% figures refer to all entry fees received but excludes the payment processing fee. For example, if 1,000 paid entries were sold at £11, total entries would be £11,000 less payment processing fees would be £1,000. Therefore the winner would receive 25% of £10,000 which is £2,500.</p><br>
+
+                </div>
+                <img alt="" class="col-md-6 col-sm-12" src="{% static 'src/imgs/woman-girl-eyes-young-about-to-collect-the-Vitaral Nutrition-Cookware Raffle-Competition-money.jpg' %}" /><br>
+            </div>
+            {# TICKETS #}
+            <div class="row" style="padding: 30px;">
+                <img alt="" class="col-md-6 col-sm-12" src="{% static 'src/imgs/Vitaral Nutrition - 316Ti - Raffle Competition Ticket.png' %}" /><br>
+                <div class="col-md-6 col-sm-12 enter_now_btn2" style="top: 200px"><a href="{% url 'register_here' %}"><button class="btn btn-primary enter_now_btn3">ENTER NOW</button></a></div>
+            </div>
+            {# END #}
+            <div class="row" style="padding: 30px;">
+                <img alt="" class="col-md-7 col-sm-12" src="{% static 'src/imgs/Vitaral Nutrition - 316Ti - Raffle Competition Prize.jpg' %}" /><br>
+                <div class="col-md-5 col-sm-12 mr-auto text-left last_foot_img" style="font-size: 20px; color: black; margin-top: 100px">
+                    <br><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Success! The winner will receive the Executive Chef Set plus a FREE health Nutritious cooked meal.</p><br>
+                    <p>For full details about the contest, please read our full terms and conditions at this link.</p><br>
+                </div><br><Br>
+            </div>
+        </div>
+    <hr>
+<br><br>
+{% endblock navbar %}

@@ -1,0 +1,167 @@
+{% extends 'vitaral_nutrition_app/base.html' %}
+{% load static %}
+{% block navbar %}<br><br><br>
+    <style>
+        .ft{
+            color: white;
+            font-size: 1em;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 50px;
+        }
+        .ft:hover{
+            background-color: rgb(255, 81, 0);
+            transition: ease 0.3s;
+        }
+        .form-control{
+            border: 2px solid !important;
+            outline: 0px solid !important;
+            border-color: rgb(255, 94, 0) !important;
+            background-color: rgb(0, 0, 0) !important;
+        }
+</style>
+        <div class="social_icons animated fadeIn " style="padding: 0px 10px 0px 0px; background-color: rgb(255, 123, 0); position: absolute; top: 100px; right: 0; display: flex; z-index: 2;">
+            <Div class="row" style="margin: 15px;">
+                <div class="col sc_con"><a target="_blank" href="https://www.facebook.com/VitaralHealth?_rdc=1&_rdr"><i class="sc fab fa-facebook-f"></i></a></div>
+                <div class="col sc_con"><a target="_blank" href="https://twitter.com/Vitaral1"><i class="sc fab fa-twitter"></i></a></div>
+                <div class="col sc_con"><a target="_blank" href="https://www.instagram.com/vitaralnutrition/"><i class="sc fab fa-instagram"></i></a></div>
+                <div class="col sc_con"><a target="_blank" href="https://www.pinterest.ca/vitaralnutrition/"><i class="sc fab fa-pinterest"></i></a></div>
+            </Div>
+        </div>
+        <div class="animated fadeIn " id="section1"><div class="container" id="section1">
+            <div class="mx-auto text-center justify-content-center">
+                <h1>A Great Opportunity To Upgrade The Kitchen</h1>
+                <h3>With The Very Best Organic and Healthiest Stainless Steel Cookware</h3>
+            </div><br>
+        </div>
+        <div class="col-md-12 animated fadeIn ">
+            <div class="row text-center mx-auto">
+                <div class="col">
+                    <div class="main-img mx-auto text-center" style="width: 350px; height: 350px;">
+                        <img alt="" src="{% static 'src/imgs/Competition_2020.png' %}" style="max-width: 100%; height: auto; display: block;"/>
+                    </div>
+                </div>
+                <div class="middle_text col col-md-5 text-left mx-auto" style="top: 50px;">
+                    <span class="fs2 text-left mr-auto"><b class="org">&#8356;20k+ Executive</b> Chef <b class="org">Set*</b><br>
+                        It's NO ORDINARY Cookware<br>
+                        <span style="font-size: 23px;">NO OIL | NO BOIL | NO STEAM</span>
+                    </span>
+                </div>
+                {% if user.is_authenticated %}
+                    <div class="col" style="top: 50px;">
+                        <a href="{% url 'index' %}"><div class="top_btn-1 ml-auto" style="width: 120px; height: 120px;">
+                            <img alt="" src="{% static 'src/imgs/enter_now.png' %}" style="max-width: 100%; height: 100%; display: block;">
+                        </div></a>
+                    </div>
+                    <div class="col" style="top: 50px;">
+                        <a href="#section2"><div class="top_btn-2 mr-auto" style="width: 120px; height: 120px;">
+                            <img alt="" src="{% static 'src/imgs/learn_more.png' %}" style="max-width: 100%; height: 100%; display: block;">
+                        </div></a>
+                    </div>
+                {% else %}
+                    <div class="col" style="top: 50px;">
+                        <a href="{% url 'user_form' %}"><div class="top_btn-1 ml-auto" style="width: 120px; height: 120px;">
+                            <img alt="" src="{% static 'src/imgs/enter_now.png' %}" style="max-width: 100%; height: 100%; display: block;">
+                        </div></a>
+                    </div>
+                    <div class="col" style="top: 50px;">
+                        <a href="#section2"><div class="top_btn-2 mr-auto" style="width: 120px; height: 120px;">
+                            <img alt="" src="{% static 'src/imgs/learn_more.png' %}" style="max-width: 100%; height: 100%; display: block;">
+                        </div></a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="footer_top_text animated fadeIn container mr-auto text-left justify-content-center">
+            <p>*If fewer than 4,500 tickets sold by closing data, a cash prize alternative will be given.
+            Cash prize will be 25% of total sales, excluding transaction fees. T&Cs and exclusions apply.</p>
+        </div><br>
+    </div>
+
+    <div class="animated fadeIn col-md-12 mx-auto text-center" id="section2" style="padding: 30px; background-color: rgba(255, 255, 255, 0.986);">
+        <div class="embed-responsive embed-responsive-16by9">
+            <video controls>
+                <source class="embed-responsive-item" src="{% static 'src/vid/316Ti Executive Chef Set.mp4' %}" type="video/mp4">
+            </video>
+          </div>
+    </div>
+    <div class="animated fadeIn mx-auto text-center col-md-12" style="padding: 20px; background-color: rgba(255, 255, 255, 0.986);">
+        <h1 style="margin-top: 20px; font-family: 'abril fatface'; color: black;">NO ORDINARY COOKWARE</h1>
+        <div class="row">
+            <img class="col-md-6 col-sm-12" src="{% static 'src/imgs/316Ti Healthiest Stainless Steel - Master-Set.jpg' %}" width="50%"/>
+            <div class="col-md-6 col-sm-12"><br>
+                <p style="text-align: left; color: black;">Are you struggling to find a 316Ti Surgical Steel and titanium cookware Master-set with limited lifetime warranty for £100? Well you won’t. But…we’ve got something more that is right up your street for less! The average household spends thousand on kitchenware, cookware, cabinets, and appliances, but what’s the last and most important step in the cooking process? Your cookware right!</p>
+                <br>
+                <p style="text-align: left; color: black;">Want a shot at owning your very own 316Ti Surgical Steel and titanium Executive Chef Set for just £11? Our Vitaral 20,000 healthiest Stainless steel raffle competition will give you the chance to win this beautiful high-end Executive Chef Set! Check out the “How It Works” page section for more information on how to enter now.</p>
+                <br>
+                <p style="text-align: left; color: black;">This is no ordinary cookware. Take a careful look, a closer personal encounter with both hands; and you’ll see and feel it’s something remarkable, high quality and a league of its own.</p>
+                <br>
+                <p style="text-align: left; color: black;">The sleek, contemporary cookware which will maintain its polished shine for years, coupled with 2 free services clean a year if needed. It is specifically designed for use on a variety of cooking surfaces, including induction, gas, ceramic and electric cooktops.</p>
+            </div>
+        </div>
+    </div>
+    <div class="animated fadeIn mx-auto text-center col-md-12" style="padding: 20px; background-color: rgba(255, 255, 255, 0.986);">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 mr-auto text-left">
+                <b class="text-left mr-auto" style="color: black; font-weight: 900;">Faster Cooking</b>
+                <p style="text-align: left; color: black;">The best organic cookware Vapo-Valve technology and semi-vacuum cooking method makes cooking more efficient and precise. When the temperature exceeds the optimal cooking temperature, the built-in Vapo-Valve clicks, letting you know it’s time to reduce the heat to avoid overcooking.</p>
+                <br>
+                <b class="text-left mr-auto" style="color: black; font-weight: 900;">Flavour without Fat</b>
+                <p style="text-align: left; color: black;">Now that there’s no need to add butter, oil or excess fat to flavour your food, your favourite recipes can be made healthier without sacrificing the taste you love.</p>
+                <br>
+                <b class="text-left mr-auto" style="color: black; font-weight: 900;">Great Nutrition</b>
+                <p style="text-align: left; color: black;">The full range of waterless cookware brands cooking method allows you to cook without the need to add and drain-off water. This maintains the optimal amount of vitamins and nutrients in your foods while also protecting the natural flavour of ingredients.
+                </p>
+            </div>
+            <img class="col-md-6 col-sm-12 ml-auto" src="{% static 'src/imgs/316Ti Healthiest Stainless Steel - Professional-Set.jpg' %}" width="50%"/>
+        </div>
+    </div>
+    <footer>
+        <div class="animated fadeIn col-md-12" style="background-color: rgb(36, 36, 36);">
+            <div class="row">
+                <div class="col-md-2 mx-auto text-center">
+                    <div class="mx-auto text-center" style="width: 160px; height: 160px; padding: 20px">
+                        <img src="{% static 'src/imgs/Vitaral Logo.png' %}" style="width: 100%; height: 100%; display: block;"/>
+                    </div>
+                    <p class="mx-auto text-center" style="font-size: 12px;">FOOD | HEALTH | EDIFICATION</p>
+                </div><br>
+                <div class="ft_con2 col-md-2 mr-auto" style="margin: 50px;">
+                    <p style="font-size: 12px;">CONNECT WITH US</p>
+                    <div class="row mx-auto">
+                        <a target="_blank" href="https://www.facebook.com/VitaralHealth?_rdc=1&_rdr"><i class="ft fab fa-facebook"></i></a>&nbsp;&nbsp;<br>
+                        <a target="_blank" href="https://twitter.com/Vitaral1"><i class="ft fab fa-twitter"></i></a>&nbsp;&nbsp;<br>
+                        <a target="_blank" href="https://www.instagram.com/vitaralnutrition/"><i class="ft fab fa-instagram"></i></a>&nbsp;&nbsp;<br>
+                        <a target="_blank" href="https://www.pinterest.ca/vitaralnutrition/"><i class="ft fab fa-pinterest"></i></a>&nbsp;&nbsp;<br>
+                    </div>&nbsp;
+                    <a class="ft_link" href="{% static 'src/pdf/Terms and Conditions.pdf' %}" target="_blank"><p style="font-size: 12px;">TERMS & CONDIITONS</p></a>
+                    <a class="ft_link" href="{% static 'src/pdf/Privacy-Policy.pdf' %}" target="_blank"><p style="font-size: 12px;">PRIVACY & POLICY</p></a>
+                </div><br>
+                <div class="col-md-4 mx-auto text-center" style="padding: 20px;">
+                    <form method="post" action="{% url 'invite_him' %}">{% csrf_token %}
+                        <h5>TELL MY FAMILY & FRIENDS</h5>
+                        <div class="row">
+                            <div class="form-group mx-auto text-center" style="padding: 5px;">
+                                <input style="color: rgba(255,255,255,0.91);" class="form-control" name="name" type="text" placeholder="Name">
+                            </div>
+                            <div class="form-group mx-auto text-center" style="padding: 5px;">
+                                <input style="color: rgba(255,255,255,0.91);" class="form-control" name="surname" type="text" placeholder='Surname'>
+                            </div>
+                        </div>
+                        <div class="form-group mx-auto text-center" style="padding: 5px;">
+                            <input style="color: rgba(255,255,255,0.91);" class="form-control" name="email" type="email" placeholder="Email">
+                        </div>
+                        <div class="mx-auto text-center form-group">
+                            <button type="submit" class="mx-auto text-center btn btn-primary" style="border: 0; background-color: rgb(255, 81, 0);">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <div class="mx-auto text-center" style="width: 200px; height: 200px;">
+                        <img src="{% static 'src/imgs/Competition_2020.png' %}" style="width: 100%; height: 100%; display: block;"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+{% endblock navbar %}

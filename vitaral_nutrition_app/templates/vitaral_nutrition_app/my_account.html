@@ -1,0 +1,214 @@
+{% extends 'vitaral_nutrition_app/base.html' %}
+{% load static %}
+{% block navbar %}
+    <script>
+        active_class('.my_account');
+    </script>
+    <style>
+        .bg_top{
+            background: white !important;
+        }
+       .avatar {
+          vertical-align: middle;
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+        }
+    .p_p:hover{
+        cursor: pointer;
+    }
+    .bt{
+        font-weight: 700;
+        border: none;
+        color: black;
+        border-bottom: 2px solid orangered;
+        background-color: transparent !important;
+    }
+    .bt:hover, .bt:focus{
+        border-bottom: 2px solid orangered;
+        outline: none;
+        box-shadow: none;
+        color: orangered;
+        transition: ease 0.6s;
+        font-size: 1.2rem;
+        background-color: transparent !important;
+    }
+    form{
+        padding: 20px;
+    }
+    
+    .form-control-file{
+        cursor: pointer;   
+    }
+    </style>
+    <script>
+    function fadeIt_In() {
+        $('.avatar').css({'opacity': '0.2'});
+        $('.p_edit').show();
+    }
+    function fadeIt_out() {
+        $('.avatar').css({'opacity': '1'});
+        $('.p_edit').hide();
+    }
+    $(document).ajaxSend(function (event, jqxhr, settings) {
+        jqxhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    });
+    </script>
+<br><br><br><br>
+            {% if p_picture %}
+                <div class="mx-auto text-center p_p">
+                    <form class="col-md-3 mx-auto text-center" enctype="multipart/form-data" method="post" action="{% url 'upload_my_pic' %}" onmouseover="fadeIt_In();" onmouseout="fadeIt_out();">{% csrf_token %}
+                        <div class="form-group col-md-3 mx-auto text-center">
+                            <input onchange="$('.upload_pic').show();" style="z-index: 4; opacity: 0; position: absolute; padding: 70px;" type="file" name="p_picture" class="form-control form-control-file"/>
+                        </div>
+                        <i style="position: absolute; color: black; display: none; font-size: 5rem; padding: 40px;" class="p_edit fas fa-user-edit"></i>
+                        <img src="{{ p_picture.url }}" alt="Avatar" class="avatar">
+                        <br><br>
+                        <button type="submit" style="display: none; border-color: blue;" class="upload_pic btn bt btn-primary">Upload It</button>
+                    </form>
+                </div>
+            {% else %}
+                <div class="mx-auto text-center p_p">
+                    <div class="mx-auto text-center p_p">
+                    <form class="col-md-3 mx-auto text-center" enctype="multipart/form-data" method="post" action="{% url 'upload_my_pic' %}" onmouseover="fadeIt_In();" onmouseout="fadeIt_out();">{% csrf_token %}
+                        <div class="form-group col-md-3 mx-auto text-center">
+                            <input onchange="$('.upload_pic').show();" style="z-index: 4; opacity: 0; position: absolute; padding: 70px;" type="file" name="p_picture" class="form-control form-control-file"/>
+                        </div>
+                        <i style="position: absolute; color: black; display: none; font-size: 5rem; padding: 40px;" class="p_edit fas fa-user-edit"></i>
+                        <img src="{% static 'src/imgs/Competition_2020.png' %}" alt="Avatar" class="avatar">
+                        <br><br>
+                        <button type="submit" style="display: none; border-color: blue;" class="upload_pic btn bt btn-primary">Upload It</button>
+                    </form>
+                    </div>
+                </div>
+            {% endif %}
+                <div class="container mx-auto text-center">
+                    {% if bio %}
+                        <p style="color: black;">Bio: {{ bio }}</p>
+                    {% endif %}
+                    {% if healthy == '' %}
+                        <p style="color: black;">You're eating healthier.</p>
+                    {% else %}
+                        <p style="color: black;">You're {{ healthy }} eating healthier.</p>
+                    {% endif %}<br>
+                    <div class="row mx-auto text-center">
+                        <div class="col-md-3">
+                            <button onclick="$('.fr').fadeOut(); $('.c_email').fadeIn();" class="btn btn-primary bt change_email">Change Email</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button onclick="$('.fr').fadeOut(); $('.c_pword').fadeIn();" class="btn btn-primary bt change_pword">Change Password</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button onclick="$('.fr').fadeOut(); $('.c_bio').fadeIn();" class="btn btn-primary bt write_a_bio">Update Bio</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button onclick="t_details();" class="btn btn-primary bt write_a_bio">Transaction Details</button>
+                        </div>
+                    </div>
+                </div><br><br>
+                <div class="container">
+                    <form style="display: none;" class="fr c_email col-md-5 mx-auto text-left" enctype="multipart/form-data" method="post" action="{% url 'change_email' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="mr-auto text-left" style="color: black;">Enter Your New Email...</label>
+                            <input required id="changed_email" name="changed_email" class="form-control"/>
+                        </div>
+                        <div class="mx-auto text-center form-group">
+                            <button type="submit" class="change_emailbtn btn btn-dark" style="background-color: #ff5e00; border: none; border-radius: 5px">Change</button>
+                        </div>
+                    </form>
+                    <form style="display: none;" class="fr c_pword col-md-5 mx-auto text-left" enctype="multipart/form-data" method="post" action="{% url 'change_password' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="new_pword" class="mr-auto text-left" style="color: black;">Enter Your New Password...</label>
+                            <input required name="new_password" id="new_pword" class="form-control"/>
+                        </div>
+                        <div class="mx-auto text-center form-group">
+                            <button type="submit" class="change_pwordbtn btn btn-dark" style="background-color: #ff5e00; border: none; border-radius: 5px">Change</button>
+                        </div>
+                    </form>
+                    <form style="display: none;" class="fr c_bio col-md-5 mx-auto text-left" enctype="multipart/form-data" method="post" action="{% url 'my_account' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="update_bio" class="mr-auto text-left" style="color: black;">Write Your Bio</label>
+                            <textarea rows="5" minlength="50" maxlength="200" id="update_bio" name="bio" class="form-control"></textarea>
+                        </div>
+                        <div class="mx-auto text-center form-group">
+                            <button type="submit" class="updated_biobtn btn btn-dark" style="background-color: #ff5e00; border: none; border-radius: 5px">Submit</button>
+                        </div>
+                    </form>
+                    <div class="container mx-auto text-center">
+                        <h3 style="color: black;" class="success_text"></h3>
+                        <h3 style="color: red;" class="error_text"></h3>
+                    </div>
+                </div>
+                <div class="fr col-md-12 mx-auto text-center t_detials_con" style="display: none; color: black;">
+                    <h1>Transaction Details</h1>
+                    <div class="col-md-5 t_table mx-auto text-left" style="color: black;">
+
+                    </div>
+                </div>
+    <script>
+    $('.c_bio').on('submit', function (e) {
+        e.preventDefault();
+       $.ajax({
+           url: '{% url 'my_account' %}',
+           type: 'POST',
+           data: $(this).serialize(),
+           success: function (data) {
+                $('.c_bio')[0].reset();
+                $('.c_bio').fadeOut();
+                timeout_things('.success_text');
+                $('.success_text').html(data);
+           },
+           error: function (error) {
+                console.log(error);
+           }
+        });
+    });
+    function t_details() {
+       $.ajax({
+           url: '{% url 'payment_data' %}',
+           success: function (data) {
+               var j = JSON.parse(data);
+               $('.t_detials_con').fadeIn();
+               $('.t_table').html('');
+                let i = 0;
+                while(i <= j.length){
+                    $('.t_table').append(
+                   "<br><p>Order Id:<b>&nbsp;&nbsp;"+ j[i]['fields']['order_id'] +"</b></p>" +
+                   "<p>Payer Mail:<b>&nbsp;&nbsp;"+ j[i]['fields']['payer_mail'] +"</b></p>" +
+                   "<p>Time:<b>&nbsp;&nbsp;"+ j[i]['fields']['c_time'] +"</b></p>"
+                    )
+                    i = i+1
+                }
+
+           },
+           error: function (error) {
+               $('.error_text').html(error);
+           }
+        });
+    }
+    $('.c_email').on('submit', function (e) {
+        e.preventDefault();
+       $.ajax({
+           url: '{% url 'change_email' %}',
+           type: 'POST',
+           data: $(this).serialize(),
+           success: function (data) {
+               $('.c_email')[0].reset();
+               $('.c_email').fadeOut();
+               timeout_things('.success_text');
+               $('.success_text').html(data);
+           },
+           error: function (error) {
+               $('.error_text').html(error);
+           }
+        });});
+    function timeout_things(cls) {
+        setTimeout(function () {
+            $(cls).html('');
+        }, 2000);
+    }
+    </script>
+{% endblock navbar %}

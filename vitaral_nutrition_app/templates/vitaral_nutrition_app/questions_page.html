@@ -1,0 +1,138 @@
+{% extends 'vitaral_nutrition_app/base.html' %}
+{% load static %}
+{% block navbar %}
+    <style>
+    .active{
+        background-color: transparent !important;
+    }
+        .bg_top{
+            background: none !important;
+        }
+    body{
+        font-size: 20px;
+        color: black;
+    }
+    </style>
+    {% if entry %}
+        <div class="container qna_con" style="padding: 100px 0px;">
+            <div class="container" style="color: black;">
+                <p><b>Read the following short paragraph and then answer some a related the question(s) below.</b></p>
+                <p>Vitaral Nutrition is a multicultural e-commerce platform based in London United Kingdom that facilitates business-to-consumer presentation on Food! Health! Edification! in home, coupled with health and fitness goods and services online.  </p>
+                <p>Vitaral Nutrition are a team of healthy nutrition waterless and greaseless cookware consultants.  That means, not a single drop of oil or water is required when cooking plant based food in 316Ti Surgical Steel and Titanium cookware, the healthier choice. </p>
+                <p>The average household spends thousands £10s of thousand on kitchen appliances and cabinets, but what’s the last and most important step in the cooking process?  Your cookware!  316Ti Surgical steel and Titanium is by far the better smarter choice in the fight against dietary illness. </p>
+                <p>The aim is to help people better understand the importance of vitamin and mineral nutrition in their diet.  It's a whole new look at lifestyle choices and not a diet plan; to help prevent illnesses such as: Type 2 Diabetes, Heart Disease, High Cholesterol, High Blood Pressure, Obesity, Cancer, Stroke and IBS.  </p>
+                <p>We help individuals enjoy a healthy lifestyle by showing them how to prepare healthy nutritious meals for their families using the right equipment and proven techniques, maximising the level of vitamin and mineral nutrition in the food they cook without using Oils, Fats or Grease and a single drop of water, cooking at a maximum 86 degrees to look better, feel better and live longer with an average nutritional retention of 93 percentage when cooking. </p>
+                <p>We also show you how the cookware saves on Time, Food, Money on domestic fuel bills Gas, Electric and Water, which increase your spending power to afford your very own 316Ti surgical  steel waterless and greaseless cookware.   If you have not watch the How it works video do it now.  <a href="{% url 'how_it_works' %}">Click Here</a></p>
+                <br><br>
+                <h1 style="font-size: 3rem;"><b>QUESTIONS</b></h1>
+            </div>
+            <div class="container mr-auto text-left" style="color: black;">
+                <div class="container mr-auto text-left">
+                    <div style="color: black;" class="text-left mr-auto" id="question_con">1. Vitaral Nutrition is based in London and facilitates what presentation in the home ?</div>
+                    <br>
+                    <div class="answer_field row mx-auto text-center">
+                        <div class="form-group">
+                            <div onclick="clicked_ans('.ans_btn1');" class="btn btn-primary ans_btn ans_btn1">Health, Food, Education</div>
+                        </div>
+                        <div class="form-group">
+                            <div onclick="clicked_ans('.ans_btn2');" class="btn btn-primary ans_btn ans_btn2">Education Health Food</div>
+                        </div>
+                        <div class="form-group">
+                            <div onclick="clicked_ans('.ans_btn3');" class="btn btn-primary ans_btn ans_btn3">Food! Health Edification</div>
+                        </div>
+                    </div><br>
+{#                    <button class="add_btn btn btn-primary">Next</button>#}
+                </div>
+            </div>
+        </div>{% csrf_token %}
+        <style>
+        .ans_btn{
+            margin: 5px;
+            color: black;
+            border: 2px solid #a6b293;
+            background-color: transparent !important;
+        }
+        .ans_btn:hover{
+            color: black;
+            border: 2px solid black;
+            background-color: transparent !important;
+        }
+        </style>
+        <div class="container thank_you" style="padding: 100px 0px; display: none;">
+            <div class="mx-auto text-center col-md-7" style="border: 5px solid #ff6800; box-shadow: 0px 0px 50px 2px #ff450a; border-radius: 20px; padding: 30px; font-family: 'Baloo 2';">
+                <h2 style="color: black; line-height: 50px;">Thank you - you have been entered in our £20,000 316Ti surgical steel and titanium Executive Chef Set Raffle Competition.  If you are the luck winner we will be coming to cook you and for family a Nutrious Healthy Delicious meal.</h2>
+            </div>
+        </div>
+    {% else %}
+        <div class="container" style="padding: 100px 0px;">
+            <div class="mx-auto text-center">
+                <h1 style="color: black">Some Unknown Error Has Occured... Contact US</h1>
+            </div>
+        </div>
+    {% endif %}
+    <script>
+        var questions = ["2.  By removing grease, fats and oil from our diet helps prevent", "3.  What is the last and most important step in the cooking process?", "4.  Which of these is naturally sweet, healthy and can eat on the go.", "5.  Using the Master Set cookware, what is the average nutritional retention without water ?",
+                         "6. What is the minimum sold ticket entries required for the Executive Chef Set to be won ?", "7.  What is the maximum cooking temperature before the Vapo value alerts ?", "8.  What material is the cookware made from ?", "9.   What is the colour of a vegetable and the name of a fruit ?", "10.   What is the name of the top price in this competition ?",
+                         "11.  What is the name of the team who provides guidance in your healthy eating quest?", "12.   How much Grease, Fat or Oil do you need when cooking with the Executive Chef Set ?", "13.   How much water do you need when cooking vegetable in the Executive Chef Set ?", "14.  How many layers are there that make up the 316Ti Cookware", "15.   Where can you find more information on healthy Foods"];
+        var ans = [["Diabetes, Piles, Verruca’s", "High Cholesterol, Flu, Cancer", "Obesity, Diabetes, Heart Disease"],
+            ["Cooker", "Cookware", "Dishwasher"], ["Chocolate boost", "Carrot", "Nutrigrain"], ["86%", "93%", "96%"],
+            ["3,500", "54,000", "4,500"], ["96 degree", "86 degree", "100 degrees"],
+            ["306Ti Stainless Steel and Titanium", "316Ti Surgical Steel and Titanium", "501Ti Surgical Steel and Titanium"],
+            ["Tomato", "Plumb", "Orange"], ["Chef Executive set", "Chef Set Executive", "Executive Chef Set"],
+            ["Vitaral Health", "Vitaral Well-being", "Vitaral Nutrition"],
+            ["Half of a can of coca cola tin 330ml", "165ml of a coca cola tin", "Not a single drop of oil"],
+            ["Full cup", "Half a Jug", "Not a single drop of water"],
+            ["5", "93", "86"],
+            ["www.vn.co", "https://blog.vitaral.co.uk", "www.competition.co.uk "]];
+        var q = [];
+        var q_field = $('#question_con');
+        var ans_btn1 = $('.ans_btn1');
+        var ans_btn2 = $('.ans_btn2');
+        var ans_btn3 = $('.ans_btn3');
+
+        var no_of_entries = parseInt({{ entry }});
+        var qu = questions.splice(questions.length - (15-no_of_entries));
+        function clicked_ans(cls) {
+            $(".ans_btn").attr("disabled", true);
+            var button_text = $(cls).html();
+            $.ajax({
+                url: "{% url 'add_my_answer' %}",
+                type: 'POST',
+                data: {
+                    answer: button_text,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function (data) {
+                    $(".ans_btn").attr("disabled", false);
+                    q_field.html('');
+                    if (parseInt(questions.length) === 0){
+                         q_field.html("Done");
+                         $('.ans_btn').hide();
+                         $.ajax({
+                             url: "{% url 'competition_done' %}",
+                             success: function () {
+                                 $('.qna_con').fadeOut();
+                                 $('.thank_you').fadeIn('slow');
+                             },
+                             error: function () {
+
+                             }
+                         });
+                    }
+                    else{
+                        q_field.html(questions[0]).fadeIn('slow');
+                        $(".ans_btn").html('');
+                        ans_btn1.html(ans[0][0]);
+                        ans_btn2.html(ans[0][1]);
+                        ans_btn3.html(ans[0][2]);
+                        ans.splice(0,1);
+                        questions.splice(0, 1);
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+{% endblock navbar %}
