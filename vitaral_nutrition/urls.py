@@ -23,9 +23,9 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
 
-    path('', TemplateView.as_view(template_name='vitaral_nutrition_app/index.html'), name="index"),
+    path('', views.index, name="index"),
     path('timer/', views.timer, name="timer"),
-    path('howitworks/', TemplateView.as_view(template_name='vitaral_nutrition_app/how_it_works.html'), name="how_it_works"),
+    path('howitworks/', views.how_it_works, name="how_it_works"),
     path('aboutus/', TemplateView.as_view(template_name='vitaral_nutrition_app/about_us.html'), name="about_us"),
     path('competition_page/', TemplateView.as_view(template_name='vitaral_nutrition_app/questions_page.html'), name="competition_page"),
     path('thank_you/', TemplateView.as_view(template_name='vitaral_nutrition_app/thank_you_page.html'), name="thanku_page"),
@@ -41,6 +41,9 @@ urlpatterns = [
     path('congrats/', views.competition_completion, name="competition_done"),
     path('competition_payment/', views.payment_data, name="payment_data"),
 
+
+    path('login/', views.user_login, name="user_login"),
+    path('register/', views.user_register, name="user_register"),
     path('questions_page/', views.questions_2, name="questions_2"),
     path('change_email/', views.change_email, name="change_email"),
     path('upload_my_picture/', views.upload_my_picture, name="upload_my_pic"),

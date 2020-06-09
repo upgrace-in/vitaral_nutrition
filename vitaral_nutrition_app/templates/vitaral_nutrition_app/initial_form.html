@@ -55,7 +55,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lora|Lobster|Josefin Sans|Roboto|Dancing Script|Abril Fatface|&display=swap" rel="stylesheet">
     <script src="https://www.paypal.com/sdk/js?client-id=AWAdnJIcT_jUbcnl-uJ-U4bSHC-Of-hsPxXaxsdzFWO8v2LQIfoJNm4X04h8kClKn6Sz5ZvXqy3eGdip&currency=GBP"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <style>
         video {
             width: 100%;
@@ -335,15 +335,15 @@
                             <table style="width: 100%;">
                                 <tr style="color: black;">
                                     <td>First Name</td>
-                                    <td><input required type="text" id="id_fname" name="id_fname" class="form-control"/></td>
+                                    <td><input minlength=6 required type="text" id="id_fname" name="id_fname" class="form-control"/></td>
                                 </tr>
                                 <tr style="color: black;">
                                     <td>SurName</td>
-                                    <td><input required type="text" id="id_lname" name="id_lname" class="form-control"/></td>
+                                    <td><input minlength=6 required type="text" id="id_lname" name="id_lname" class="form-control"/></td>
                                 </tr>
                                 <tr style="color: black;">
                                     <td>Email Address</td>
-                                    <td><input required type="email" id="id_email" name="id_email" class="form-control"/></td>
+                                    <td><input minlength=6 required type="email" id="id_email" name="id_email" class="form-control"/></td>
                                 </tr>
                             </table><br>
                             <div class="form-group mr-auto text-left">
@@ -361,9 +361,6 @@
                             <label for="other_set"></label>
                             <input type="text" class="form-control" name="other_set_name" id="other_set" placeholder="Which one then..."/>
                         </div>
-                        <div class="form-group mx-auto text-center">
-                            <div class="g-recaptcha" data-sitekey="6Lfum_YUAAAAAD-rGm5Oh5Ysh1Whg1AG9Ca09uVb"></div>
-                        </div>
                         <div class="form-check mr-auto text-left">
                                 <input required value="1" name="agree" class="agree form-check-input check_my" type="checkbox" id="gridCheck3">
                                 <label class="form-check-label" for="gridCheck3" style="font-size: 15px">
@@ -376,7 +373,19 @@
                                     We encourage you to read the policy before agreeing.
                                 </label>
                             </div>
-                    <button type="submit" class="mx-auto text-center btn btn-dark" style="margin-top: 10px; background-color: orangered; border: 0px solid white;">SUBMIT</button>
+                            <div style="color: red; font-weight: 700; font-size: 1.2rem;">{{ e }}</div><br>
+                            <div class='captcha-field'></div>
+                            <button type="submit" disabled=true class="mx-auto captch text-center btn btn-dark" style="margin-top: 10px; background-color: orangered; border: 0px solid white;">SUBMIT</button>
+
+                                <script src="https://www.google.com/recaptcha/api.js?render=6Le0DPgUAAAAACzTR8o8KvhqHefKF-d8bXImhWmz"></script>
+                                <script>
+                                grecaptcha.ready(function() {
+                                    grecaptcha.execute('6Le0DPgUAAAAACzTR8o8KvhqHefKF-d8bXImhWmz', {action: 'initial'}).then(function(token) {
+                                        $('.captcha-field').append("<input style='display: none;' type='text' id='g-recaptcha-response' value="+ token +" name='g-recaptcha-response'/>");
+                                        $('.captch').prop('disabled', false);
+                                    });
+                                });
+                                </script>
                 </form>
             </div>
             <hr style="background-color: black;">

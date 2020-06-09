@@ -63,7 +63,10 @@ class my_acc_info(models.Model):
 class timer_info(models.Model):
     timer = models.IntegerField()
 
-
+class analytics(models.Model):
+    initial_page = models.IntegerField()
+    how_it_work_page = models.IntegerField()
+    home_page = models.IntegerField()
 
 
 

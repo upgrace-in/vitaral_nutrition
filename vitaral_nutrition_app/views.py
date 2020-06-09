@@ -8,35 +8,30 @@ from django.shortcuts import render, HttpResponse
 from django.views.generic import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from vitaral_nutrition_app.models import competitors_info, competitors_payment_info, competition, initial_form_info, my_acc_info, timer_info
+from vitaral_nutrition_app.models import competitors_info, competitors_payment_info, competition, initial_form_info, my_acc_info, timer_info, analytics
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
+from django.conf import settings
+import urllib.request
+import json
 
-i = [0]
-i_i = [0]
-already = []
-q = []
-correct_ans = []
-correct_answers = ['Food! Health Edification', 'Obesity, Diabetes, Heart Disease', 'Cookware',
-                           'Carrot', '93%', '4,500', '86 degree', '316Ti Surgical Steel and Titanium', 'Orange',
-                           'Executive Chef Set', 'Vitaral Nutrition', 'Not a single drop of oil', 'Not a single drop of water', '5', 'https://blog.vitaral.co.uk']
-questions = ["1.  Vitaral Nutrition is based in London and facilitates what presentation in the home?",
-             "2.  By removing grease, fats and oil from our diet helps prevent",
-             "3.  What is the last and most important step in the cooking process?",
-             "4.  Which of these is naturally sweet, healthy and can eat on the go.",
-             "5.  Using the Master Set cookware, what is the average nutritional retention without water ?",
-             "6. What is the minimum sold ticket entries required for the Executive Chef Set to be won ?",
-             "7.  What is the maximum cooking temperature before the Vapo value alerts ?",
-             "8.  What material is the cookware made from ?",
-             "9.   What is the colour of a vegetable and the name of a fruit ?",
-             "10.   What is the name of the top price in this competition ?",
-             "11.  What is the name of the team who provides guidance in your healthy eating quest?",
-             "12.   How much Grease, Fat or Oil do you need when cooking with the Executive Chef Set ?",
-             "13.   How much water do you need when cooking vegetable in the Executive Chef Set ?",
-             "14.  How many layers are there that make up the 316Ti Cookware",
-             "15.   Where can you find more information on healthy Foods"]
+GOOGLE_RECAPTCHA_SECRET_KEY = '6Le0DPgUAAAAAIVCTrJ0pTmFedS-vb4gJ-sPwX-A'
+
+
+def index(request):
+    a = analytics.objects.get(id=1)
+    a.home_page = a.home_page+1
+    a.save()
+    return render(request, 'vitaral_nutrition_app/index.html')
+
+
+def how_it_works(request):
+    a = analytics.objects.get(id=1)
+    a.how_it_work_page = a.how_it_work_page+1
+    a.save()
+    return render(request, 'vitaral_nutrition_app/how_it_works.html')
 
 
 def timer(request):
@@ -46,28 +41,17 @@ def timer(request):
 
 @login_required(function=None, login_url='user_form')
 def questions_2(request):
+    model = competition
+    user = request.user.username
+    m = competitors_info.objects.get(username=user)
     if request.method == 'POST':
-        user = request.user.username
-        model = competition
-        m = competitors_info.objects.get(username=user)
-        q_nos = request.POST['question_nos']
-        ans = request.POST['answer']
-        if already.count(1) != 1:
-            already.append(1)
-            del questions[0:(15-int(q_nos))]
-            q.append(questions)
-            del correct_answers[0:(15 - int(q_nos))]
-            correct_ans.append(correct_answers)
-            print("im")
-        else:
-            pass
-        index = i_i[-1]
-        model.objects.create(i_id=m, question=q[0][index], answer=ans, correct_answer=correct_ans[0][index])
-        h = index + 1
-        i_i.append(h)
+        question = request.POST['question']
+        answer = request.POST['answer']
+        correct_answer = request.POST['correct_answer']
+        model.objects.create(i_id=m, question=question, answer=answer, correct_answer=correct_answer)
         return HttpResponse("Added")
     else:
-        return HttpResponse("Try Again Later...")
+        return HttpResponse("Failed")
 
 
 def email_my_frnd(request):
@@ -79,15 +63,17 @@ def email_my_frnd(request):
         name = name + ' ' + surname
 
         msg = MIMEMultipart('alternative')
-        msg['Subject'] = "Vitaral Nutrition Invitation"
+        msg['Subject'] = "WIN WIN The 316Ti Executive Set"
         html = """
             <html>
-              <head></head>
+              <head>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+              </head>
               <body>
                 <h1>Hi %s</h1>
                 <p>I have just entered this raffle competition and thought this would be great opportunity for you since you are a great cook, health conscious and love a beautiful kitchen.</p>
-                <img class='text-center mx-auto' src='https://vitaral.co.uk/images/email_logo.jpg' style='width: 300px;'><br>
-                <button href="http://www.competition.vitaral.co.uk/" class="btn btn-primary">Click Here</button>
+                <img class='text-center mx-auto' src='https://vitaral.co.uk/media/Vitaral-Nutrition-316Ti-Raf.gif' style='width: 200px;'><br>
+                <button class="btn btn-primary"><a href="competition.vitaral.co.uk">Click Here</a></button>
               </body>
             </html>
             """ % name
@@ -109,6 +95,24 @@ def initial_form(request):
         email = request.POST['id_email']
         agree = request.POST['agree']
         set_name = request.POST['set_name']
+        recaptcha_response = request.POST['g-recaptcha-response']
+
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        payload = {
+            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+        }
+        data = urllib.parse.urlencode(payload).encode()
+        req = urllib.request.Request(url, data=data)
+        response = urllib.request.urlopen(req)
+        result = json.loads(response.read().decode())
+
+        if (not result['success']) or (not result['action'] == 'initial'):
+            e = 'Invalid reCAPTCHA. Please try again.'
+            return render(request, 'vitaral_nutrition_app/registration.html', {'e': e})
+
+
+
         other_set_name = request.POST['other_set_name']
         initial_form_info.objects.update_or_create(
              first_name=fname,
@@ -120,6 +124,9 @@ def initial_form(request):
         )
         return redirect('index')
     else:
+        a = analytics.objects.get(id=1)
+        a.initial_page = a.initial_page+1
+        a.save()
         return render(request, 'vitaral_nutrition_app/initial_form.html')
 
 
@@ -215,11 +222,10 @@ def add_my_answer(request):
     user = request.user.username
     m = competitors_info.objects.get(username=user)
     if request.method == 'POST':
-        ans = request.POST['answer']
-        index = i[-1]
-        model.objects.create(i_id=m, question=questions[index], answer=ans, correct_answer=correct_answers[index])
-        index_of_f = index + 1
-        i.append(index_of_f)
+        question = request.POST['question']
+        answer = request.POST['answer']
+        correct_answer = request.POST['correct_answer']
+        model.objects.create(i_id=m, question=question, answer=answer, correct_answer=correct_answer)
         return HttpResponse("Added")
     else:
         return HttpResponse("Failed")
@@ -274,6 +280,21 @@ def participators_details(request):
         region = request.POST['region']
         eating_healthier = request.POST['eating_healthier']
         agree = request.POST['agree']
+        recaptcha_response = request.POST['grecaptcharesponse']
+
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        payload = {
+            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+        }
+        data = urllib.parse.urlencode(payload).encode()
+        req = urllib.request.Request(url, data=data)
+        response = urllib.request.urlopen(req)
+        result = json.loads(response.read().decode())
+
+        if (not result['success']) or (not result['action'] == 'signup'):
+            e = 'Invalid reCAPTCHA. Please try again.'
+            return render(request, 'vitaral_nutrition_app/registration.html', {'e': e})
 
         m = competitors_info()
         m.paid = 0
@@ -321,22 +342,75 @@ def way_to_competition(request):
 
 
 def user_form(request):
-    if request.method == 'POST':
-        id_username = request.POST['id_username']
-        id_password = request.POST['id_password']
-        try:
-            user = authenticate(request, username=id_username, password=id_password)
-            u_name = User.objects.get(username=id_username)
-            if user is not None:
-                login(request, user=user)
-                print("Logged IN ")
-                return redirect('index')
-            elif u_name:
-                e = "Wrong Credentials, Try Again !!!"
-                return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
+    return render(request, 'vitaral_nutrition_app/user_form.html')
 
-        except (EOFError, ObjectDoesNotExist):
-            user = User.objects.create_user(username=id_username, password=id_password)
+
+def user_login(request):
+    if request.method == 'POST':
+        id_username = request.POST['id_username1']
+        id_password = request.POST['id_password1']
+        recaptcha_response = request.POST['g-recaptcha-response']
+
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        payload = {
+            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+        }
+        data = urllib.parse.urlencode(payload).encode()
+        req = urllib.request.Request(url, data=data)
+        response = urllib.request.urlopen(req)
+        result = json.loads(response.read().decode())
+
+        if (not result['success']) or (not result['action'] == 'signup'):
+            e = 'Invalid reCAPTCHA. Please try again.'
+            return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
+
+        u_name = User.objects.filter(username=id_username)
+        e_mail = User.objects.filter(email=id_username)
+
+        if u_name:
+            user = authenticate(request, username=id_username, password=id_password)
+            login(request, user)
+            return redirect('index')
+        elif e_mail:
+            user = authenticate(request, email=id_username, password=id_password)
+            login(request, user)
+            return redirect('index')
+        else:
+            e = "Some Unkown Error Has Occured"
+            return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
+    else:
+        return render(request, 'vitaral_nutrition_app/user_form.html')
+
+
+def user_register(request):
+    if request.method == 'POST':
+        id_username = request.POST['id_username2']
+        recaptcha_response = request.POST['g-recaptcha-response']
+        id_password = request.POST['id_password2']
+        id_email = request.POST['id_email2']
+
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        payload = {
+            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+        }
+        data = urllib.parse.urlencode(payload).encode()
+        req = urllib.request.Request(url, data=data)
+        response = urllib.request.urlopen(req)
+        result = json.loads(response.read().decode())
+
+        if (not result['success']) or (not result['action'] == 'signup'):
+            e = 'Invalid reCAPTCHA. Please try again.'
+            return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
+
+        u_name = User.objects.filter(username=id_username)
+        e_mail = User.objects.filter(email=id_email)
+        if u_name or e_mail:
+            e = "Wrong Credentials, Try Again !!!"
+            return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
+        else:
+            user = User.objects.create_user(username=id_username, email=id_email, password=id_password)
             user.save()
             login(request, user)
             return redirect('index')

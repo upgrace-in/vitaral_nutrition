@@ -77,11 +77,32 @@
             Cash prize will be 25% of total sales, excluding transaction fees. T&Cs and exclusions apply.</p>
         </div><br>
     </div>
+    <style>
+        #play {
+          display: block;
+          position: absolute;
+          z-index: 1;
+          /* 50% - (height/2) [Using a font icon, adjust accordingliy] */
+          bottom: calc(50% - 5em);
+          /* 50% -(width/2) */
+          left: calc(50% - 4em)
+        }
 
+        #play.idel::before {
+          content: '\2bc8';
+          width: 8em;
+          /* AR 16:9 is width * .5625 */
+          height: 4.5em;
+          color: cyan;
+          font-size: 8em
+        }
+    </style>
     <div class="animated fadeIn col-md-12 mx-auto text-center" id="section2" style="padding: 30px; background-color: rgba(255, 255, 255, 0.986);">
         <div class="embed-responsive embed-responsive-16by9">
-            <video controls>
-                <source class="embed-responsive-item" src="{% static 'src/vid/316Ti Executive Chef Set.mp4' %}" type="video/mp4">
+            <!--<div style="color: orangered; padding: 50px;"><i style=" z-index: 5; border-radius: 50%; background-color: white; font-size: 8rem; position: absolute; top: 0; left: 0;" class="fas fa-play-circle"></i></div>-->
+
+            <video autoplay loop>
+                <source class="embed-responsive-item" src="https://vitaral.co.uk/media/316Ti%20Executive%20Chef%20Set.mp4" type="video/mp4">
             </video>
           </div>
     </div>
@@ -90,13 +111,13 @@
         <div class="row">
             <img class="col-md-6 col-sm-12" src="{% static 'src/imgs/316Ti Healthiest Stainless Steel - Master-Set.jpg' %}" width="50%"/>
             <div class="col-md-6 col-sm-12"><br>
-                <p style="text-align: left; color: black;">Are you struggling to find a 316Ti Surgical Steel and titanium cookware Master-set with limited lifetime warranty for £100? Well you won’t. But…we’ve got something more that is right up your street for less! The average household spends thousand on kitchenware, cookware, cabinets, and appliances, but what’s the last and most important step in the cooking process? Your cookware right!</p>
+                <p style="text-align: left; color: black;">Are you struggling to find a 316Ti Surgical Steel and titanium cookware Master-set with limited lifetime warranty for £100? Well you won’t. But…we’ve got something more that's right up your street for less! The average household spends thousand on kitchenware, cookware, cabinets, and appliances, but what’s the last and most important step in the cooking process? Your cookware right!</p>
                 <br>
                 <p style="text-align: left; color: black;">Want a shot at owning your very own 316Ti Surgical Steel and titanium Executive Chef Set for just £11? Our Vitaral 20,000 healthiest Stainless steel raffle competition will give you the chance to win this beautiful high-end Executive Chef Set! Check out the “How It Works” page section for more information on how to enter now.</p>
                 <br>
                 <p style="text-align: left; color: black;">This is no ordinary cookware. Take a careful look, a closer personal encounter with both hands; and you’ll see and feel it’s something remarkable, high quality and a league of its own.</p>
                 <br>
-                <p style="text-align: left; color: black;">The sleek, contemporary cookware which will maintain its polished shine for years, coupled with 2 free services clean a year if needed. It is specifically designed for use on a variety of cooking surfaces, including induction, gas, ceramic and electric cooktops.</p>
+                <p style="text-align: left; color: black;">The sleek, contemporary cookware which will maintain its polished shine for years, coupled with 2 free service clean a year if needed. It is specifically designed for use on a variety of cooking surfaces, including induction, gas, ceramic and electric cooktops.</p>
             </div>
         </div>
     </div>
@@ -164,4 +185,17 @@
         </div>
     </footer>
 
+    <script>
+    //         $('video').add('.fa-play-circle').click(function(){
+    //             if ($(".fa-play-circle").is(":hidden")){
+    //                 $('.fa-play-circle').show();
+    //                 $('video').trigger('pause');
+    //             }
+    //             else{
+    //                 $('.fa-play-circle').hide();
+    //                 $('video').trigger('play');
+    //             }
+
+    //         });
+    </script>
 {% endblock navbar %}

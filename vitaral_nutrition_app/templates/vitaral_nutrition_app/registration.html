@@ -54,8 +54,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lora|Lobster|Josefin Sans|Roboto|Dancing Script|Abril Fatface|&display=swap" rel="stylesheet">
+    <!--Real Account-->
     <script src="https://www.paypal.com/sdk/js?client-id=Ad6ZrPRT0U0SH4pZk0WCSOo74iU2VckVK1CVYEhj4dqwypaE2drPk8vOyIRpg2jGN0qy-tsrw6L9JLwg&currency=GBP"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!--Sandbox Account-->
+    <!--<script src="https://www.paypal.com/sdk/js?client-id=AWAdnJIcT_jUbcnl-uJ-U4bSHC-Of-hsPxXaxsdzFWO8v2LQIfoJNm4X04h8kClKn6Sz5ZvXqy3eGdip&currency=GBP"></script>-->
     <style>
         video {
             width: 100%;
@@ -450,15 +452,15 @@
                         <div style="padding: 30px;">
                             <div class="form-group mr-auto text-left">
                                 <label for="id_fname">First Name</label>
-                                <input required type="text" id="id_fname" name="fname" class="form-control"/>
+                                <input minlength=6 required type="text" id="id_fname" name="fname" class="form-control"/>
                             </div>
                             <div class="form-group mr-auto text-left">
                                 <label for="id_surname">Surname</label>
-                                <input required type="text" id="id_surname" name="surname" class="form-control"/>
+                                <input minlength=6 required type="text" id="id_surname" name="surname" class="form-control"/>
                             </div>
                             <div class="form-group mr-auto text-left">
                                 <label for="id_email">Email Address</label>
-                                <input required type="email" id="id_email" name="mail_id" class="form-control"/>
+                                <input minlength=6 required type="email" id="id_email" name="mail_id" class="form-control"/>
                             </div>
                             <div class="form-group mr-auto text-left">
                               <label for="sel1">What Region Do You live?</label>
@@ -477,9 +479,6 @@
                                 <option>Yorkshire and the Humber</option>
 
                               </select>
-                            </div>
-                            <div class="form-group mx-auto text-center">
-                                <div class="g-recaptcha" data-sitekey="6Lfum_YUAAAAAD-rGm5Oh5Ysh1Whg1AG9Ca09uVb"></div>
                             </div>
 
                         </div><br><br>
@@ -508,7 +507,7 @@
                             </div>
                             <p class="mr-auto text-left pls_txt" style="font-size: 1.1rem;">Please select the number of entire's in the raffle
                             you would like to purchase. Each entry is equal to 1 question,
-                                1 question is equal to <span style="font-size: 1.3rem; font-weight: 900;">&#8356;11</span>, the a maximum entries is <span style="font-size: 1.3rem; font-weight: 900;">15</span>.</p>
+                                1 question is equal to <span style="font-size: 1.3rem; font-weight: 900;">&#8356;11</span>, the maximum entries is <span style="font-size: 1.3rem; font-weight: 900;">15</span>.</p>
                             <div class="col-md-12">
                                 <div class="col-md-12 ticket_logo mx-auto text-center" style="width: 400px; height: 300px;">
                                     <img alt="" src="{% static 'src/imgs/Vitaral Nutrition - 316Ti - Raffle Competition Ticket Counter .jpg' %}" style="width: 100%; height: 100%; display: block;"/>
@@ -533,6 +532,17 @@
                         </div>
 
                 </div>
+                <div style="color: red; font-weight: 700; font-size: 1.2rem;">{{ e }}</div><br>
+                <div class="captcha-field"></div>
+                <script src="https://www.google.com/recaptcha/api.js?render=6Le0DPgUAAAAACzTR8o8KvhqHefKF-d8bXImhWmz"></script>
+                <script>
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6Le0DPgUAAAAACzTR8o8KvhqHefKF-d8bXImhWmz', {action: 'signup'}).then(function(token) {
+                        $('.captcha-field').append("<input style='display: none;' type='text' id='g-recaptcha-response' value="+ token +" name='g-recaptcha-response'/>");
+                        $('.next-btn').prop('disabled', false);
+                    });
+                });
+                </script>
                  <div class="container text-center mx-auto" style="margin-top: 30px;">
                         <div class="row">
                             <div class="form-check mr-auto text-left">
@@ -541,13 +551,11 @@
                                   I understand and agree that I am entering a health based competition to win a High-end 316Ti Surgical Steel and Titanium Executive Chef Cookware Set.  Better known as the Executive Set with a cost price of £20,395 by the piece.  Each entry is charged at £11.  If fewer than 4,500 tickets sold by closing date, a cash prize alternative will be given. Cash prize will be 25% of total ticket sales, excluding transaction fees.  I have read the T&Cs and exclusions that apply.
                                 </label>
                             </div>
-                                <button type="submit" class="mx-auto text-center enter_now_btn next-btn btn btn-dark" style="margin-top: 30px; background-color: orangered">NEXT</button>
+                                <button type="submit" disabled=true class="mx-auto text-center enter_now_btn next-btn btn btn-dark" style="margin-top: 30px; background-color: orangered">NEXT</button>
                         </div><br>
                     </div>
             </form>
         </div><br><br><br>
-
-
     <script>
         function close_it(){
                 $('.overlay').removeClass('animated fadeInLeft');
@@ -586,6 +594,7 @@
                    agree: $('.agree').val(),
                    entries: parseInt(en),
                    eating_healthier: eating_status(),
+                   grecaptcharesponse: $('#g-recaptcha-response').val(),
                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
                },
                success: function (data) {

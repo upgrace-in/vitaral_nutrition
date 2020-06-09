@@ -65,23 +65,28 @@
         <div class="mx-auto text-center justify-content-center">
             <div class="col col-md-5 mx-auto text-center">
                 <div class="row" style="padding: 20px">
-                    <div class="login_section mx-auto text-center"><h1>Login</h1></div>
+                    <div onclick="login_sec();" class="login_section mx-auto text-center"><h1>Login</h1></div>
                     <div class="divider"></div>
-                    <div class="register_section active_section  mx-auto text-center"><h1>Register</h1></div>
+                    <div onclick="register_sec();" class="register_section active_section  mx-auto text-center"><h1>Register</h1></div>
                 </div>
                     <div style="color: red; font-weight: 700; font-size: 1.2rem;">{{ e }}</div><br>
-                <form method="post" class="mr-auto text-left signin_form" style="background: rgba(255, 255, 255, 0.8); z-index: 3; position: absolute; display: none" action="{% url 'user_form' %}">
+                <form method="post" class="mr-auto text-left signin_form" style="background: rgba(255, 255, 255, 0.8); z-index: 3; position: absolute; display: none" action="{% url 'user_login' %}">
                     {% csrf_token %}
                     <div class="form-group">{% csrf_token %}
-                        <label for="uname">User name or Email address&nbsp;<span style="color: red">*</span></label>
-                        <input class="form-control" type="text" id="uname" name="id_username">
-                    </div><br>
+                        <label for="uname">Username or Email Address&nbsp;<span style="color: red">*</span></label>
+                        <input minlength=6 class="form-control" type="text" id="uname" name="id_username1">
+                    </div>
+                    <!--<div class="form-group">-->
+                    <!--    <label for="email">Email address&nbsp;<span style="color: red">*</span></label>-->
+                    <!--    <input minlength=6 class="form-control" type="email" id="email" name="id_email">-->
+                    <!--</div>-->
                     <div class="form-group">
                         <label for="pword">Password&nbsp;<span style="color: red">*</span>&nbsp;&nbsp;<span style="font-size: 0.6em; color: #b7b7b7">(at least 6 characters Upper and Lower case with special character $@ )</span></label>
-                        <input class="form-control" type="password" id="pword" name="id_password">
+                        <input minlength=6 class="form-control" type="password" id="pword" name="id_password1">
                     </div>
-                    <div class="form-group mx-auto text-center">
-                        <div class="g-recaptcha" data-sitekey="6Lfum_YUAAAAAD-rGm5Oh5Ysh1Whg1AG9Ca09uVb"></div>
+                    <div class="form-group mx-auto text-center captcha-field1">
+                        <!--<div class="g-recaptcha" data-callback="correctCaptcha" data-sitekey="6Le0DPgUAAAAACzTR8o8KvhqHefKF-d8bXImhWmz"></div>-->
+
                     </div>
                     <div class="mx-auto text-center">
                         <div class="form-check mx-auto text-center" style="padding: 10px">
@@ -91,39 +96,60 @@
                             </label>
                         </div>
                         <div class="form-group mx-auto text-center">
-                            <button type="submit" class="btn btn-warning" style="color: white;background: orangered"><b>Log In</b></button>
+                            <button type="submit" disabled=true class="btn btn-warning login_btn" style="color: white;background: orangered"><b>Log In</b></button>
                         </div>
                         <div class="form-group mx-auto text-center">
                             <a href="#"><b>Lost Your Password ?</b></a>
                         </div>
                     </div>
                 </form>
-                <form method="post" class="mr-auto text-left register_form" action="{% url 'user_form' %}" style="position: absolute; background: rgba(255, 255, 255, 0.8); z-index: 3; ">
+                <form method="post" class="mr-auto text-left register_form" action="{% url 'user_register' %}" style="position: absolute; background: rgba(255, 255, 255, 0.8); z-index: 3; ">
                     {% csrf_token %}
                     <div class="form-group">{% csrf_token %}
-                        <label for="uname">User name or Email address&nbsp;<span style="color: red">*</span></label>
-                        <input class="form-control" type="text" id="uname" name="id_username">
-                    </div><br>
+                        <label for="uname">Username&nbsp;<span style="color: red">*</span></label>
+                        <input minlength=6 class="form-control" type="text" id="uname" name="id_username2">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address&nbsp;<span style="color: red">*</span></label>
+                        <input minlength=6 class="form-control" type="email" id="email" name="id_email2">
+                    </div>
                     <div class="form-group">
                         <label for="pword">Password&nbsp;<span style="color: red">*</span>&nbsp;&nbsp;<span style="font-size: 0.6em; color: #b7b7b7">(at least 6 characters Upper and Lower case with special character $@ )</span></label>
-                        <input class="form-control" type="password" id="pword" name="id_password">
+                        <input minlength=6 class="form-control" type="password" id="pword" name="id_password2">
                     </div>
-                    <div class="form-group mx-auto text-center">
-                        <div class="g-recaptcha" data-sitekey="6Lfum_YUAAAAAD-rGm5Oh5Ysh1Whg1AG9Ca09uVb"></div>
+                    <div class="form-group mx-auto text-center captcha-field2">
+                        <!--<div class="g-recaptcha" data-callback="correctCaptcha" data-sitekey="6Le0DPgUAAAAACzTR8o8KvhqHefKF-d8bXImhWmz"></div>-->
+
                     </div>
                     <div class="mx-auto text-center">
                         <div class="form-group mx-auto text-center">
-                            <button type="submit" class="btn btn-warning" style="color: white;background: orangered"><b>Register</b></button>
+                            <button type="submit" disabled=true class="btn btn-warning register_btn" style="color: white;background: orangered"><b>Register</b></button>
+                            <span id="captcha" style="color:red"></span>
                         </div>
                         <div class="form-group mx-auto text-center">
-                            <a href="#" class="login_here"><span>Log In Here ?</span></a>
+                            <a href="#" onclick="login_sec();" class="login_here"><span>Log In Here ?</span></a>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0DPgUAAAAACzTR8o8KvhqHefKF-d8bXImhWmz"></script>
     <script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6Le0DPgUAAAAACzTR8o8KvhqHefKF-d8bXImhWmz', {action: 'signup'}).then(function(token) {
+           $('.captcha-field2').append("<input style='display: none;' type='text' id='g-recaptcha-response' value="+ token +" name='g-recaptcha-response'/>");
+           $('.captcha-field1').append("<input style='display: none;' type='text' id='g-recaptcha-response' value="+ token +" name='g-recaptcha-response'/>");
+            $('.login_btn').prop('disabled', false);
+            $('.register_btn').prop('disabled', false);
+        });
+    });
+    </script>
+    <script>
+    var correctCaptcha = function(response) {
+        $('.login_btn').prop('disabled', false);
+        $('.register_btn').prop('disabled', false);
+    };
     function hide(cls){
         $(cls).show();
         $(cls).hide();
@@ -132,21 +158,27 @@
         $(cls).hide();
         $(cls).show();
     }
-    $('.login_here').click(function () {
+    // $('.login_here').click(function () {
+    //     hide('.register_form');
+    //     show('.signin_form');
+    // });
+    function login_sec(){
         hide('.register_form');
         show('.signin_form');
-    });
-        $('.login_section').click(function () {
-            hide('.register_form');
-            show('.signin_form');
-            $('.register_section').removeClass('active_section');
-            $('.login_section').addClass('active_section');
-        });
-        $('.register_section').click(function () {
+        $('.register_section').removeClass('active_section');
+        $('.login_section').addClass('active_section');
+    }
+        // $('.login_section').click(function () {
+
+        // });
+        // $('.register_section').click(function () {
+        function register_sec(){
             hide('.signin_form');
             show('.register_form');
             $('.login_section').removeClass('active_section');
             $('.register_section').addClass('active_section');
-        });
+        }
+
+        // });
     </script>
 {% endblock navbar %}

@@ -46,6 +46,28 @@
     316ti Competition,
     cookware competition">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+     fbq('init', '546892679335229');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+     <img height="1" width="1"
+    src="https://www.facebook.com/tr?id=546892679335229&ev=PageView
+    &noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+
     <link rel="icon" href="{% static 'src/imgs/Competition_2020.png' %}">
     <link rel="stylesheet" href="{% static 'src/fa/css/all.min.css' %}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -67,8 +89,12 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+        html {
+          scroll-behavior: smooth;
+        }
+
         body{
-            
+
             font-family: 'Josefin Sans';
             color: rgba(255, 255, 255, 0.966);
         }
@@ -227,7 +253,7 @@
                     minute = second * 60,
                     hour = minute * 60,
                     day = hour * 24;
-                    let date = `Dec ${soMany}, 2020 00:00:00`;
+                    let date = `Nov ${soMany}, 2020 00:00:00`;
                     let countDown = new Date(date).getTime(),
                       x = setInterval(function() {
                       let now = new Date().getTime(),
@@ -237,18 +263,16 @@
                           document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute)),
                           document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
                       }, second);
-
-                      function active_class(cls){
-                            $('.home').removeClass('active');
-                            $(cls).addClass('active');
-                      }
                 },
                 error: function (error) {
                     console.log(error);
                 },
             });
+            function active_class(cls){
+                    $('.home').removeClass('active');
+                    $(cls).addClass('active');
+              }
             </script>
-
 {% block navbar %}
 {% endblock navbar %}
     </div>

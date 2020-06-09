@@ -4,7 +4,7 @@
     <style>
     .bg_how_it_works{
         background-color: black;
-        {#background-image: url("{% static 'src/imgs/how_it_works_bg.png' %}");#}
+        /*background-image: url("{% static 'src/imgs/how_it_works_bg.png' %}");*/
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -60,7 +60,7 @@
                 <div class="col-md-6 col-sm-12 mr-auto text-left"  style="font-size: 18px; color:white">
                     <br><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vitaral Nutrition is offering people a chance to win the very best organic cookware in the world. The healthiest Stainless steel and titanium Executive Chef Set. In order to enter you need to fill in the entry form, select the amount of entries you want to purchase, make the payment and then answer health base skill question to complete your entry.</p><br>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Only successful entries will be entered into the prize draw. We cannot disclose if your answer is right or wrong, this is to make sure we keep it as fair as possible for all entrants.</p><br>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The contest is open to residents In England, Scotland and Wales. It will run for six months starting on 15/06/2020 and finishing on 15/12/2020. There will be no extensions to the competition. At the end of the six months the draw will be carried out by up to three impartial third party delegates. We will contact the winner to tell them of their good fortune and arrange delivery and presentation!</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The contest is open to residents In England, Scotland and Wales. It will run for six months starting on 20/05/2020 and finishing on 20/11/2020. There will be no extensions to the competition. At the end of the six months the draw will be carried out by up to three impartial third party delegates. We will contact the winner to tell them of their good fortune and arrange delivery and presentation!</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What could you win? It depends on how many tickets we sell. If we do not receive 4,500 paid entries by the closing date, the prize will not be the Executive Chef Set but a cash prize. The cash prize will be 25% of the total amount of payments received less the transaction fees.</p>
                 </div>
             </div>
@@ -68,7 +68,8 @@
         {# Video #}
         <div class="animated fadeIn col-md-12 mx-auto text-center" id="section2" style="padding: 50px;">
             <div class="embed-responsive embed-responsive-16by9">
-                <video controls autoplay>
+                <!--<div style="background-color: white; border-radius: 50%; color: orangered; z-index: 2; font-size: 20px; position: absolute; top:50%; left: 50%;"><i class="fas fa-play-circle"></i></div>-->
+                <video autoplay loop>
                     <source class="embed-responsive-item" src="{% static 'src/vid/316Ti Raffle Competition - How It Works.mp4' %}" type="video/mp4">
                 </video>
               </div>
@@ -104,10 +105,25 @@
                 <img alt="" class="col-md-7 col-sm-12" src="{% static 'src/imgs/Vitaral Nutrition - 316Ti - Raffle Competition Prize.jpg' %}" /><br>
                 <div class="col-md-5 col-sm-12 mr-auto text-left last_foot_img" style="font-size: 20px; color: black; margin-top: 100px">
                     <br><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Success! The winner will receive the Executive Chef Set plus a FREE health Nutritious cooked meal.</p><br>
-                    <p>For full details about the contest, please read our full terms and conditions at this link.</p><br>
+                    <p>For full details about the contest, please read our full terms and conditions at this link.</p>
+                    <br><a href="{% url 'register_here' %}"><button class="btn btn-primary mx-auto text-center enter_now_btn3">ENTER NOW</button></a>
                 </div><br><Br>
             </div>
         </div>
     <hr>
 <br><br>
+
+    <script>
+            // $('video').add('.fa-play-circle').click(function(){
+            //     if ($(".fa-play-circle").is(":hidden")){
+            //         $('.fa-play-circle').show();
+            //         $('video').trigger('pause');
+            //     }
+            //     else{
+            //         $('.fa-play-circle').hide();
+            //         $('video').trigger('play');
+            //     }
+
+            // });
+    </script>
 {% endblock navbar %}

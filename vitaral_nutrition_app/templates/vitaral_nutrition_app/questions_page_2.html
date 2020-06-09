@@ -8,10 +8,6 @@
         .bg_top{
             background: none !important;
         }
-    body{
-        font-size: 20px;
-        color: black;
-    }
     </style>
     {% if not_used_entry %}
         <style>
@@ -22,6 +18,7 @@
             }
         </style>
         <script src="https://www.paypal.com/sdk/js?client-id=Ad6ZrPRT0U0SH4pZk0WCSOo74iU2VckVK1CVYEhj4dqwypaE2drPk8vOyIRpg2jGN0qy-tsrw6L9JLwg&currency=GBP"></script>
+        <!--<script src="https://www.paypal.com/sdk/js?client-id=AWAdnJIcT_jUbcnl-uJ-U4bSHC-Of-hsPxXaxsdzFWO8v2LQIfoJNm4X04h8kClKn6Sz5ZvXqy3eGdip&currency=GBP"></script>-->
         <div class="col-md-12 mx-auto text-center pay_container" style="top: 10px;">
             <div class="col mx-auto text-center pad_ipad2" style="width: 300px; padding: 20px; background: white; border: 2px solid blue; border-radius: 20px; color: black;">
                 <h1>Pay&nbsp;&pound;<span style="font-weight: 700" class="get_price"></span></h1>
@@ -76,8 +73,19 @@
                            },
                            success: function (data) {
                                $('.pay_container').fadeOut();
-                             $('.qna_con').fadeIn();
                              window.scrollTo(0,0);
+                                  $(document).ready(function () {
+                                    questions.splice(0, (15-no_of_entries));
+                                    ans.splice(0, (15-no_of_entries));
+                                    correct_answers.splice(0, (15-no_of_entries));
+
+                                    q_field.html(questions[0]).fadeIn('slow');
+                                    $(".ans_btn").html('');
+                                    ans_btn1.html(ans[0][0]);
+                                    ans_btn2.html(ans[0][1]);
+                                    ans_btn3.html(ans[0][2]);
+                                });
+                             $('.qna_con').fadeIn();
                            },
                            error: function (error) {
                              console.log(error);
@@ -87,7 +95,7 @@
                 }
             }).render('#paypal-button-container');
         </script>
-        <div class="container qna_con" style="padding: 100px 0px; display: none;">
+        <div class="container qna_con" style="padding: 100px 0px; display: none; font-size: 20px;">
             <div class="container" style="color: black;">
                 <p><b>Read the following short paragraph and then answer some a related the question(s) below.</b></p>
                 <p>Vitaral Nutrition is a multicultural e-commerce platform based in London United Kingdom that facilitates business-to-consumer presentation on Food! Health! Edification! in home, coupled with health and fitness goods and services online.  </p>
@@ -114,7 +122,6 @@
                             <div onclick="clicked_ans('.ans_btn3');" class="btn btn-primary ans_btn ans_btn3"></div>
                         </div>
                     </div><br>
-{#                    <button class="add_btn btn btn-primary">Next</button>#}
                 </div>
             </div>
         </div>{% csrf_token %}
@@ -137,10 +144,22 @@
             </div>
         </div>
     <script>
-        var questions = ["1. Vitaral Nutrition is based in London and facilitates what presentation in the home ?",
-                         "2.  By removing grease, fats and oil from our diet helps prevent", "3.  What is the last and most important step in the cooking process?", "4.  Which of these is naturally sweet, healthy and can eat on the go.", "5.  Using the Master Set cookware, what is the average nutritional retention without water ?",
-                         "6. What is the minimum sold ticket entries required for the Executive Chef Set to be won ?", "7.  What is the maximum cooking temperature before the Vapo value alerts ?", "8.  What material is the cookware made from ?", "9.   What is the colour of a vegetable and the name of a fruit ?", "10.   What is the name of the top price in this competition ?",
-                         "11.  What is the name of the team who provides guidance in your healthy eating quest?", "12.   How much Grease, Fat or Oil do you need when cooking with the Executive Chef Set ?", "13.   How much water do you need when cooking vegetable in the Executive Chef Set ?", "14.  How many layers are there that make up the 316Ti Cookware", "15.   Where can you find more information on healthy Foods"];
+
+        var questions = ["1.  Vitaral Nutrition is based in London and facilitates what presentation in the home?",
+            "2.  By removing grease, fats and oil from our diet helps prevent",
+            "3.  What is the last and most important step in the cooking process?",
+            "4.  Which of these is naturally sweet, healthy and can eat on the go.",
+            "5.  Using the Master Set cookware, what is the average nutritional retention without water ?",
+            "6. What is the minimum sold ticket entries required for the Executive Chef Set to be won ?",
+            "7.  What is the maximum cooking temperature before the Vapo value alerts ?",
+            "8.  What material is the cookware made from ?",
+            "9.   What is the colour of a vegetable and the name of a fruit ?",
+            "10.   What is the name of the top price in this competition ?",
+            "11.  What is the name of the team who provides guidance in your healthy eating quest?",
+            "12.   How much Grease, Fat or Oil do you need when cooking with the Executive Chef Set ?",
+            "13.   How much water do you need when cooking vegetable in the Executive Chef Set ?", "" +
+            "14.  How many layers are there that make up the 316Ti Cookware",
+            "15.   Where can you find more information on healthy Foods"];
         var ans = [["Health, Food, Education", "Education Health Food", "Food! Health Edification"], ["Diabetes, Piles, Verruca’s", "High Cholesterol, Flu, Cancer", "Obesity, Diabetes, Heart Disease"],
             ["Cooker", "Cookware", "Dishwasher"], ["Chocolate boost", "Carrot", "Nutrigrain"], ["86%", "93%", "96%"],
             ["3,500", "54,000", "4,500"], ["96 degree", "86 degree", "100 degrees"],
@@ -151,6 +170,9 @@
             ["Full cup", "Half a Jug", "Not a single drop of water"],
             ["5", "93", "86"],
             ["www.vn.co", "https://blog.vitaral.co.uk", "www.competition.co.uk "]];
+        var correct_answers = ['Food! Health Edification', 'Obesity, Diabetes, Heart Disease', 'Cookware',
+                           'Carrot', '93%', '4,500', '86 degree', '316Ti Surgical Steel and Titanium', 'Orange',
+                           'Executive Chef Set', 'Vitaral Nutrition', 'Not a single drop of oil', 'Not a single drop of water', '5', 'https://blog.vitaral.co.uk']
         var q = [];
         var q_field = $('#question_con');
         var ans_btn1 = $('.ans_btn1');
@@ -158,25 +180,18 @@
         var ans_btn3 = $('.ans_btn3');
 
         var no_of_entries = parseInt({{ not_used_entry }});
-        $(document).ready(function () {
-            questions.splice(0, (15-no_of_entries));
-            ans.splice(0, (15-no_of_entries));
-            q_field.html(questions[0]).fadeIn('slow');
-            $(".ans_btn").html('');
-            ans_btn1.html(ans[0][0]);
-            ans_btn2.html(ans[0][1]);
-            ans_btn3.html(ans[0][2]);
-            ans.splice(0,1);
-            questions.splice(0, 1);
-        });
         function clicked_ans(cls) {
+            ans.splice(0,1);
+            var ca = correct_answers.splice(0,1);
+            var q = questions.splice(0, 1);
             $(".ans_btn").attr("disabled", true);
             var button_text = $(cls).html();
             $.ajax({
                 url: "{% url 'questions_2' %}",
                 type: 'POST',
                 data: {
-                    question_nos: no_of_entries,
+                    question: q[0],
+                    correct_answer: ca[0],
                     answer: button_text,
                     csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
                 },
@@ -195,8 +210,6 @@
                         ans_btn1.html(ans[0][0]);
                         ans_btn2.html(ans[0][1]);
                         ans_btn3.html(ans[0][2]);
-                        ans.splice(0,1);
-                        questions.splice(0, 1);
                     }
                 },
                 error: function (error) {
