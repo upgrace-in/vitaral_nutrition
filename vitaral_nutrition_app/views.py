@@ -310,7 +310,7 @@ def participators_details(request):
         return HttpResponse(m.entries)
 
 
-@login_required(function=None, login_url='user_form')
+#@login_required(function=None, login_url='user_form')
 def way_to_competition(request):
     try:
         model = competitors_info.objects.get(username=request.user.username)
