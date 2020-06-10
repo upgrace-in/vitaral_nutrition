@@ -377,33 +377,19 @@ def user_login(request):
             e = 'Invalid reCAPTCHA. Please try again.'
             return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
 
-        # u_name = User.objects.filter(username=id_username)
-        # e_mail = User.objects.filter(email=id_username)
-
-        regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$'
-        r = re.search(regex, id_username)
-        if r:
-            user = authenticate(request, email=id_username, password=id_password)
+        i = 0
+        if '@' in id_username:
+            u = User.objects.get(email=id_username)
+            user = authenticate(request, username=u.username, email=id_username, password=id_password)
             login(request, user)
             return redirect('index')
-        elif r == False:
+        elif i==0:
             user = authenticate(request, username=id_username, password=id_password)
             login(request, user)
             return redirect('index')
         else:
             e = "Some Unkown Error Has Occured"
             return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
-        # if u_name:
-        #     user = authenticate(request, username=id_username, password=id_password)
-        #     login(request, user)
-        #     return redirect('index')
-        # elif e_mail:
-        #     user = authenticate(request, email=id_username, password=id_password)
-        #     login(request, user)
-        #     return redirect('index')
-        # else:
-        #     e = "Some Unkown Error Has Occured"
-        #     return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
     else:
         return render(request, 'vitaral_nutrition_app/user_form.html')
 
