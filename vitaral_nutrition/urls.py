@@ -43,7 +43,7 @@ urlpatterns = [
 
 
     path('login/', views.user_login, name="user_login"),
-    path('register/', views.user_register, name="user_register"),
+    # path('register/', views.user_register, name="user_register"),
     path('questions_page/', views.questions_2, name="questions_2"),
     path('change_email/', views.change_email, name="change_email"),
     path('upload_my_picture/', views.upload_my_picture, name="upload_my_pic"),

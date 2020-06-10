@@ -268,14 +268,15 @@ def payment_data(request):
         return HttpResponse(details)
 
 
-@login_required(function=None, login_url='user_form')
 def participators_details(request):
     if request.method == 'POST':
-        user = request.user.username
-        username = user
         firstname = request.POST['fname']
         surname = request.POST['surname']
-        email = request.POST['mail_id']
+
+        username = request.POST['username']
+        email = request.POST['email']
+        id_password = request.POST['password']
+
         entries = request.POST['entries']
         region = request.POST['region']
         eating_healthier = request.POST['eating_healthier']
@@ -296,6 +297,16 @@ def participators_details(request):
             e = 'Invalid reCAPTCHA. Please try again.'
             return render(request, 'vitaral_nutrition_app/registration.html', {'e': e})
 
+        u_name = User.objects.filter(username=username)
+        e_mail = User.objects.filter(email=email)
+
+        if u_name and e_mail:
+            pass
+        else:
+            user = User.objects.create(username=username,  email=email, password=id_password)
+            user.set_password(id_password)
+            user.save()
+            login(request, user)
         m = competitors_info()
         m.paid = 0
         m.username = username
@@ -345,6 +356,7 @@ def user_form(request):
     return render(request, 'vitaral_nutrition_app/user_form.html')
 
 
+import re
 def user_login(request):
     if request.method == 'POST':
         id_username = request.POST['id_username1']
@@ -365,57 +377,36 @@ def user_login(request):
             e = 'Invalid reCAPTCHA. Please try again.'
             return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
 
-        u_name = User.objects.filter(username=id_username)
-        e_mail = User.objects.filter(email=id_username)
+        # u_name = User.objects.filter(username=id_username)
+        # e_mail = User.objects.filter(email=id_username)
 
-        if u_name:
-            user = authenticate(request, username=id_username, password=id_password)
+        regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$'
+        r = re.search(regex, id_username)
+        if r:
+            user = authenticate(request, email=id_username, password=id_password)
             login(request, user)
             return redirect('index')
-        elif e_mail:
-            user = authenticate(request, email=id_username, password=id_password)
+        elif r == False:
+            user = authenticate(request, username=id_username, password=id_password)
             login(request, user)
             return redirect('index')
         else:
             e = "Some Unkown Error Has Occured"
             return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
+        # if u_name:
+        #     user = authenticate(request, username=id_username, password=id_password)
+        #     login(request, user)
+        #     return redirect('index')
+        # elif e_mail:
+        #     user = authenticate(request, email=id_username, password=id_password)
+        #     login(request, user)
+        #     return redirect('index')
+        # else:
+        #     e = "Some Unkown Error Has Occured"
+        #     return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
     else:
         return render(request, 'vitaral_nutrition_app/user_form.html')
 
-
-def user_register(request):
-    if request.method == 'POST':
-        id_username = request.POST['id_username2']
-        recaptcha_response = request.POST['g-recaptcha-response']
-        id_password = request.POST['id_password2']
-        id_email = request.POST['id_email2']
-
-        url = 'https://www.google.com/recaptcha/api/siteverify'
-        payload = {
-            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
-            'response': recaptcha_response
-        }
-        data = urllib.parse.urlencode(payload).encode()
-        req = urllib.request.Request(url, data=data)
-        response = urllib.request.urlopen(req)
-        result = json.loads(response.read().decode())
-
-        if (not result['success']) or (not result['action'] == 'signup'):
-            e = 'Invalid reCAPTCHA. Please try again.'
-            return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
-
-        u_name = User.objects.filter(username=id_username)
-        e_mail = User.objects.filter(email=id_email)
-        if u_name or e_mail:
-            e = "Wrong Credentials, Try Again !!!"
-            return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
-        else:
-            user = User.objects.create_user(username=id_username, email=id_email, password=id_password)
-            user.save()
-            login(request, user)
-            return redirect('index')
-    else:
-        return render(request, 'vitaral_nutrition_app/user_form.html')
 
 
 def logout_view(request):
