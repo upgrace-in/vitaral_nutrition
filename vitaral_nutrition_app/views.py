@@ -210,6 +210,9 @@ def my_acc(request):
 @login_required(function=None, login_url='user_form')
 def competition_completion(request):
     user = request.user.username
+    # a = analytics.objects.get(id=1)
+    # a.thank_you = a.thank_you+1
+    # a.save()
     m = competitors_info.objects.get(username=user)
     m.competition_given = 1
     m.save()
