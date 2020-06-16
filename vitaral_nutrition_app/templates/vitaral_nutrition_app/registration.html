@@ -5,7 +5,7 @@
         Vitaral Nutrition - Healthy Cookware Raffle Competition.
     </title>
     <meta charset="UTF-8">
-    <meta name="description" content="When you enter our Vitaral Nutrition Healthy cookware raffle competition, you have a 1 in 300,000 chance of winning the top pf the range 316Ti surgical steel and titanium Executive Chef Set. With over 65 million people is in the UK between 18 and 65 there isn’t much room for everyone to enter so at £11 what is there to wait for.  Enter now.  https://competition.vitaral.co.uk.
+    <meta name="description" content="When you enter our Vitaral Nutrition Healthy cookware raffle competition, you have a 1 in 300,000 chance of winning the top pf the range 316Ti surgical steel and titanium Executive Chef Set. With over 65 million people is in the UK between 18 and 65 there isn’t much room for everyone to enter so at £22 what is there to wait for.  Enter now.  https://competition.vitaral.co.uk.
     Answer health based questions and submit your answers. Simple.  Read the scenario and answer all the questions and learn the benefits of the product to help change your life. To Change Your Health, Is To Change Your Cookware. To Change your cookware is to change your life and lifestyle cooking methods.  Ditch those diet plans.  Lose weight without losing food.   No Oil No Boil No Steam. Resistance Is Futile.
     Fight against dietary disease, Diabetes, High Blood Pressure, Cancer, Heart Disease, High Cholesterol, Alzheimer's, Stroke, IBS, Obesity, Allergies.   Step 1. Assess at your cookware.  Step 2. Revised how you prepare your meals.  Step 3. Take the QQ online today.
     Waterless cookware brands namely 316Ti surgical steel and titanium are the healthiest stainless steel cookware, the best induction cookware, probably the only chemical free ‘pots and pans’ as we know it, and most important vacumatic cookware for your health today.  Cooking your veg like carrots, peas and parsnip, you get the maximum nutrition and the natural sweetness.
@@ -45,6 +45,23 @@
     best green cookware,
     316ti Competition,
     cookware competition">
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+     fbq('init', '546892679335229');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+     <img height="1" width="1"
+    src="https://www.facebook.com/tr?id=546892679335229&ev=PageView
+    &noscript=1"/>
+    </noscript>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{% static 'src/imgs/Competition_2020.png' %}">
     <link rel="stylesheet" href="{% static 'src/fa/css/all.min.css' %}"/>
@@ -369,12 +386,12 @@
                 }
                 function change_entry(){
                     var new_entry = $('.new_entry').val();
-                    var int = parseInt(new_entry)*11;
+                    var int = parseInt(new_entry)*22;
                     $('.get_price').html(int);
                     return int;
                 }
                 function get_p(){
-                    var int = ({{ entries }})*11;
+                    var int = ({{ entries }})*22;
                     $('.get_price').html(int);
                     return int;
                 }
@@ -404,7 +421,7 @@
                           return actions.order.create({
                             purchase_units: [{
                               amount: {
-                                value: (new_entry())*11
+                                value: (new_entry())*22
                               }
                             }]
                           });
@@ -515,7 +532,7 @@
                             </div>
                             <p class="mr-auto text-left pls_txt" style="font-size: 1.1rem;">Please select the number of entire's in the raffle
                             you would like to purchase. Each entry is equal to 1 question,
-                                1 question is equal to <span style="font-size: 1.3rem; font-weight: 900;">&#8356;11</span>, the maximum entries is <span style="font-size: 1.3rem; font-weight: 900;">15</span>.</p>
+                                1 question is equal to <span style="font-size: 1.3rem; font-weight: 900;">&#8356;22</span>, the maximum entries is <span style="font-size: 1.3rem; font-weight: 900;">15</span>.</p>
                             <div class="col-md-12">
                                 <div class="col-md-12 ticket_logo mx-auto text-center" style="width: 400px; height: 300px;">
                                     <img alt="" src="{% static 'src/imgs/Vitaral Nutrition - 316Ti - Raffle Competition Ticket Counter .jpg' %}" style="width: 100%; height: 100%; display: block;"/>
@@ -556,7 +573,7 @@
                             <div class="form-check mr-auto text-left">
                                 <input required value="1" name="agree" class="agree form-check-input check_my" type="checkbox" id="gridCheck3">
                                 <label class="form-check-label" for="gridCheck3">
-                                  I understand and agree that I am entering a health based competition to win a High-end 316Ti Surgical Steel and Titanium Executive Chef Cookware Set.  Better known as the Executive Set with a cost price of £20,395 by the piece.  Each entry is charged at £11.  If fewer than 4,500 tickets sold by closing date, a cash prize alternative will be given. Cash prize will be 25% of total ticket sales, excluding transaction fees.  I have read the T&Cs and exclusions that apply.
+                                  I understand and agree that I am entering a health based competition to win a High-end 316Ti Surgical Steel and Titanium Executive Chef Cookware Set.  Better known as the Executive Set with a cost price of £20,395 by the piece.  Each entry is charged at £22.  If fewer than 4,500 tickets sold by closing date, a cash prize alternative will be given. Cash prize will be 25% of total ticket sales, excluding transaction fees.  I have read the T&Cs and exclusions that apply.
                                 </label>
                             </div>
                                 <button type="submit" disabled=true class="mx-auto text-center enter_now_btn next-btn btn btn-dark" style="margin-top: 30px; background-color: orangered">NEXT</button>
@@ -588,7 +605,7 @@
             var en = $('#entry_field').val();
             entries.push(en);
             $('.get_price').html('');
-            $('.get_price').html(parseInt(entries[0])*11);
+            $('.get_price').html(parseInt(entries[0])*22);
             var g = $('.get_price').text();
             e.preventDefault();
             $.ajax({
@@ -638,7 +655,7 @@
                   return actions.order.create({
                     purchase_units: [{
                       amount: {
-                        value: parseInt(entries[0])*11
+                        value: parseInt(entries[0])*22
                       }
                     }]
                   });

@@ -1,6 +1,23 @@
 {% extends 'vitaral_nutrition_app/base.html' %}
 {% load static %}
 {% block navbar %}<br><br><br>
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+     fbq('init', '546892679335229');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+     <img height="1" width="1"
+    src="https://www.facebook.com/tr?id=546892679335229&ev=PageView
+    &noscript=1"/>
+    </noscript>
     <style>
         .ft{
             color: white;
@@ -38,7 +55,7 @@
             <div class="row text-center mx-auto">
                 <div class="col">
                     <div class="main-img mx-auto text-center" style="width: 350px; height: 350px;">
-                        <img alt="" src="{% static 'src/imgs/Competition_2020.png' %}" style="max-width: 100%; height: auto; display: block;"/>
+                        <img alt="" src="{% static 'src/imgs/Win the 316Ti Cookware -Try for Only £22.png' %}" style="max-width: 100%; height: auto; display: block;"/>
                     </div>
                 </div>
                 <div class="middle_text col col-md-5 text-left mx-auto" style="top: 50px;">
@@ -178,7 +195,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="mx-auto text-center" style="width: 200px; height: 200px;">
-                        <img src="{% static 'src/imgs/Competition_2020.png' %}" style="width: 100%; height: 100%; display: block;"/>
+                        <img src="{% static 'src/imgs/Win the 316Ti Cookware -Try for Only £22.png' %}" style="width: 100%; height: 100%; display: block;"/>
                     </div>
                 </div>
             </div>
