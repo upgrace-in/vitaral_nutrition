@@ -8,7 +8,7 @@ from django.shortcuts import render, HttpResponse
 from django.views.generic import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from vitaral_nutrition_app.models import competitors_info, competitors_payment_info, competition, initial_form_info, my_acc_info, timer_info, analytics
+from vitaral_nutrition_app.models import competitors_info, competitors_payment_info, competition, initial_form_info, my_acc_info, timer_info, analytic_model
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -21,14 +21,14 @@ GOOGLE_RECAPTCHA_SECRET_KEY = '6Le0DPgUAAAAAIVCTrJ0pTmFedS-vb4gJ-sPwX-A'
 
 
 def index(request):
-    a = analytics.objects.get(id=1)
+    a = analytic_model.objects.get(id=1)
     a.home_page = a.home_page+1
     a.save()
     return render(request, 'vitaral_nutrition_app/index.html')
 
 
 def how_it_works(request):
-    a = analytics.objects.get(id=1)
+    a = analytic_model.objects.get(id=1)
     a.how_it_work_page = a.how_it_work_page+1
     a.save()
     return render(request, 'vitaral_nutrition_app/how_it_works.html')
@@ -124,7 +124,7 @@ def initial_form(request):
         )
         return redirect('index')
     else:
-        a = analytics.objects.get(id=1)
+        a = analytic_model.objects.get(id=1)
         a.initial_page = a.initial_page+1
         a.save()
         return render(request, 'vitaral_nutrition_app/initial_form.html')
@@ -210,9 +210,9 @@ def my_acc(request):
 @login_required(function=None, login_url='user_form')
 def competition_completion(request):
     user = request.user.username
-    # a = analytics.objects.get(id=1)
-    # a.thank_you = a.thank_you+1
-    # a.save()
+    a = analytic_model.objects.get(id=1)
+    a.thank_you = a.thank_you+1
+    a.save()
     m = competitors_info.objects.get(username=user)
     m.competition_given = 1
     m.save()
