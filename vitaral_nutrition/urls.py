@@ -41,6 +41,7 @@ urlpatterns = [
     path('congrats/', views.competition_completion, name="competition_done"),
     path('competition_payment/', views.payment_data, name="payment_data"),
 
+    path('check_code/', views.check_code, name="check_code"),
 
     path('login/', views.user_login, name="user_login"),
     # path('register/', views.user_register, name="user_register"),

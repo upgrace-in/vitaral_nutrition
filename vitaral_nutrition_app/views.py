@@ -8,7 +8,7 @@ from django.shortcuts import render, HttpResponse
 from django.views.generic import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from vitaral_nutrition_app.models import competitors_info, competitors_payment_info, competition, initial_form_info, my_acc_info, timer_info, analytic_model
+from vitaral_nutrition_app.models import competitors_info, competitors_payment_info, competition, initial_form_info, my_acc_info, timer_info, analytic_model, discount_code
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -19,6 +19,14 @@ import json
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6Le0DPgUAAAAAIVCTrJ0pTmFedS-vb4gJ-sPwX-A'
 
+def check_code(request):
+    if request.method == 'POST':
+        code = request.POST['discount']
+        try:
+            m = discount_code.objects.get(code=code)
+            return HttpResponse(m.discount)
+        except ObjectDoesNotExist:
+            return HttpResponse("errorincode")
 
 def index(request):
     a = analytic_model.objects.get(id=1)
@@ -284,21 +292,21 @@ def participators_details(request):
         region = request.POST['region']
         eating_healthier = request.POST['eating_healthier']
         agree = request.POST['agree']
-        recaptcha_response = request.POST['grecaptcharesponse']
+        # recaptcha_response = request.POST['grecaptcharesponse']
 
-        url = 'https://www.google.com/recaptcha/api/siteverify'
-        payload = {
-            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
-            'response': recaptcha_response
-        }
-        data = urllib.parse.urlencode(payload).encode()
-        req = urllib.request.Request(url, data=data)
-        response = urllib.request.urlopen(req)
-        result = json.loads(response.read().decode())
+        # url = 'https://www.google.com/recaptcha/api/siteverify'
+        # payload = {
+        #     'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
+        #     'response': recaptcha_response
+        # }
+        # data = urllib.parse.urlencode(payload).encode()
+        # req = urllib.request.Request(url, data=data)
+        # response = urllib.request.urlopen(req)
+        # result = json.loads(response.read().decode())
 
-        if (not result['success']) or (not result['action'] == 'signup'):
-            e = 'Invalid reCAPTCHA. Please try again.'
-            return render(request, 'vitaral_nutrition_app/registration.html', {'e': e})
+        # if (not result['success']) or (not result['action'] == 'signup'):
+        #     e = 'Invalid reCAPTCHA. Please try again.'
+        #     return render(request, 'vitaral_nutrition_app/registration.html', {'e': e})
 
         u_name = User.objects.filter(username=username)
         e_mail = User.objects.filter(email=email)

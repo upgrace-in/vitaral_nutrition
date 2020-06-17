@@ -3,6 +3,12 @@ from django.db import models
 import uuid
 # from django.contrib.auth import User
 
+class discount_code(models.Model):
+    code = models.CharField(max_length=100)
+    discount = models.IntegerField()
+
+    def __str__(self):
+        return self.code
 
 class competitors_info(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
