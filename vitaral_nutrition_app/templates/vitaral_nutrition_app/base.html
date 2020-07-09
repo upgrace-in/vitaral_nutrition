@@ -248,12 +248,14 @@
             $.ajax({
                 url: '{% url 'timer' %}',
                 success: function (data) {
-                    let soMany = data;
+                    let days = data['days'];
+                    let month_name = data['month_name'];
+                    let year = data['year'];
                     const second = 1000,
                     minute = second * 60,
                     hour = minute * 60,
                     day = hour * 24;
-                    let date = `Nov ${soMany}, 2020 00:00:00`;
+                    let date = `${month_name} ${days}, ${year} 00:00:00`;
                     let countDown = new Date(date).getTime(),
                       x = setInterval(function() {
                       let now = new Date().getTime(),

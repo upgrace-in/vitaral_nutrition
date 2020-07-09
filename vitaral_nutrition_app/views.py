@@ -29,22 +29,28 @@ def check_code(request):
             return HttpResponse("errorincode")
 
 def index(request):
-    a = analytic_model.objects.get(id=1)
+    a = analytic_model.objects.first()
     a.home_page = a.home_page+1
     a.save()
     return render(request, 'vitaral_nutrition_app/index.html')
 
 
 def how_it_works(request):
-    a = analytic_model.objects.get(id=1)
+    a = analytic_model.objects.first()
     a.how_it_work_page = a.how_it_work_page+1
     a.save()
     return render(request, 'vitaral_nutrition_app/how_it_works.html')
 
 
 def timer(request):
-    timer = timer_info.objects.all().first()
-    return HttpResponse(timer.timer)
+    timer = timer_info.objects.first()
+    context = {
+        'month_name': timer.month_name,
+        'days': timer.days,
+        'year': timer.year
+    }
+    data = json.dumps(context, indent=4, sort_keys=True, default=str)
+    return HttpResponse(data, content_type='application/json')
 
 
 @login_required(function=None, login_url='user_form')
@@ -80,7 +86,7 @@ def email_my_frnd(request):
               <body>
                 <h1>Hi %s</h1>
                 <p>I have just entered this raffle competition and thought this would be great opportunity for you since you are a great cook, health conscious and love a beautiful kitchen.</p>
-                <img class='text-center mx-auto' src='https://vitaral.co.uk/media/Vitaral-Nutrition-316Ti-Raf.gif' style='width: 200px;'><br>
+                <img class='text-center mx-auto' src='https://competition.vitaral.co.uk/static/email.png' style='width: 200px;'><br>
                 <button class="btn btn-primary"><a href="competition.vitaral.co.uk">Click Here</a></button>
               </body>
             </html>
@@ -132,7 +138,7 @@ def initial_form(request):
         )
         return redirect('index')
     else:
-        a = analytic_model.objects.get(id=1)
+        a = analytic_model.objects.first()
         a.initial_page = a.initial_page+1
         a.save()
         return render(request, 'vitaral_nutrition_app/initial_form.html')
@@ -218,7 +224,7 @@ def my_acc(request):
 @login_required(function=None, login_url='user_form')
 def competition_completion(request):
     user = request.user.username
-    a = analytic_model.objects.get(id=1)
+    a = analytic_model.objects.first()
     a.thank_you = a.thank_you+1
     a.save()
     m = competitors_info.objects.get(username=user)
@@ -292,21 +298,21 @@ def participators_details(request):
         region = request.POST['region']
         eating_healthier = request.POST['eating_healthier']
         agree = request.POST['agree']
-        # recaptcha_response = request.POST['grecaptcharesponse']
+        recaptcha_response = request.POST['grecaptcharesponse']
 
-        # url = 'https://www.google.com/recaptcha/api/siteverify'
-        # payload = {
-        #     'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
-        #     'response': recaptcha_response
-        # }
-        # data = urllib.parse.urlencode(payload).encode()
-        # req = urllib.request.Request(url, data=data)
-        # response = urllib.request.urlopen(req)
-        # result = json.loads(response.read().decode())
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        payload = {
+            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+        }
+        data = urllib.parse.urlencode(payload).encode()
+        req = urllib.request.Request(url, data=data)
+        response = urllib.request.urlopen(req)
+        result = json.loads(response.read().decode())
 
-        # if (not result['success']) or (not result['action'] == 'signup'):
-        #     e = 'Invalid reCAPTCHA. Please try again.'
-        #     return render(request, 'vitaral_nutrition_app/registration.html', {'e': e})
+        if (not result['success']) or (not result['action'] == 'signup'):
+            e = 'Invalid reCAPTCHA. Please try again.'
+            return render(request, 'vitaral_nutrition_app/registration.html', {'e': e})
 
         u_name = User.objects.filter(username=username)
         e_mail = User.objects.filter(email=email)

@@ -333,8 +333,8 @@
                     <img alt="" src="{% static 'src/imgs/vital_health_logo_dark.png' %}" style="width: 100%; height: 100%; display: block;"/>
                 </div>
                 <a class="nav-link col-md-7 middle_text mx-auto text-center" href="{% url 'index' %}"><h1 class="middle_text_inner">316Ti Registration</h1></a>
-                <div class="col-md-3 logo mx-auto text-center" style="width: 300px; height: 250px; top: 65px">
-                    <img alt="" src="{% static 'src/imgs/Competition_2020.png' %}" style="width: 100%; height: 100%; display: block;"/>
+                <div class="col-md-3 logo mx-auto text-center" style="width: 250px; height: 100px; top: 10px">
+                    <img alt="" src="{% static 'src/imgs/Win the 316Ti Cookware -Try for Only £22.png' %}" style="max-width: 100%; height: auto; display: block;"/>
                 </div>
             </div>
         </nav>
@@ -629,7 +629,7 @@
                 grecaptcha.ready(function() {
                     grecaptcha.execute('6Le0DPgUAAAAACzTR8o8KvhqHefKF-d8bXImhWmz', {action: 'signup'}).then(function(token) {
                         $('.captcha-field').append("<input style='display: none;' type='text' id='g-recaptcha-response' value="+ token +" name='g-recaptcha-response'/>");
-                        // $('.next-btn').prop('disabled', false);
+                        $('.next-btn').prop('disabled', false);
                     });
                 });
                 </script>
@@ -641,12 +641,11 @@
                                   I understand and agree that I am entering a health based competition to win a High-end 316Ti Surgical Steel and Titanium Executive Chef Cookware Set.  Better known as the Executive Set with a cost price of £20,395 by the piece.  Each entry is charged at £22.  If fewer than 4,500 tickets sold by closing date, a cash prize alternative will be given. Cash prize will be 25% of total ticket sales, excluding transaction fees.  I have read the T&Cs and exclusions that apply.
                                 </label>
                             </div>
-                                <button type="submit" class="mx-auto text-center enter_now_btn next-btn btn btn-dark" style="margin-top: 30px; background-color: orangered">NEXT</button>
+                                <button type="submit" disabled=true class="mx-auto text-center enter_now_btn next-btn btn btn-dark" style="margin-top: 30px; background-color: orangered">NEXT</button>
                         </div><br>
                     </div>
             </form>
         </div><br><br><br>
-        <!-- make button disbaled adn the googel one too -->
     <script>
         function close_it(){
                 $('.overlay').removeClass('animated fadeInLeft');
@@ -709,7 +708,7 @@
                }
             });
         });
-       
+
             paypal.Buttons({
                 style:{
                   size: 'small',

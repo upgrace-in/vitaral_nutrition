@@ -67,13 +67,16 @@ class my_acc_info(models.Model):
 
 
 class timer_info(models.Model):
-    timer = models.IntegerField()
+    month_name = models.CharField(max_length=100)
+    days = models.IntegerField()
+    year = models.IntegerField()
 
 class analytic_model(models.Model):
     home_page = models.IntegerField()
     initial_page = models.IntegerField()
     how_it_work_page = models.IntegerField()
     thank_you = models.IntegerField()
+
 
 
 
