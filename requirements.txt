@@ -9,7 +9,7 @@ pip==19.0.3
 pyOpenSSL==19.1.0
 pycparser==2.20
 pytz==2020.1
-setuptools==40.8.0
+setuptools==65.5.1
 six==1.14.0
 sqlparse==0.3.1
 urllib3==1.25.9
