@@ -72,10 +72,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lora|Lobster|Josefin Sans|Roboto|Dancing Script|Abril Fatface|&display=swap" rel="stylesheet">
     <!--Real Account-->
-    <script src="https://www.paypal.com/sdk/js?client-id=Ad6ZrPRT0U0SH4pZk0WCSOo74iU2VckVK1CVYEhj4dqwypaE2drPk8vOyIRpg2jGN0qy-tsrw6L9JLwg&currency=GBP"></script>
+    <!-- <script src="https://www.paypal.com/sdk/js?client-id=Ad6ZrPRT0U0SH4pZk0WCSOo74iU2VckVK1CVYEhj4dqwypaE2drPk8vOyIRpg2jGN0qy-tsrw6L9JLwg&currency=GBP"></script> -->
     <!--Sandbox Account-->
     <!-- sb-e3mcc1711295@personal.example.com sandbox123 -->
-<!--     <script src="https://www.paypal.com/sdk/js?client-id=AWAdnJIcT_jUbcnl-uJ-U4bSHC-Of-hsPxXaxsdzFWO8v2LQIfoJNm4X04h8kClKn6Sz5ZvXqy3eGdip&currency=GBP"></script> -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AWAdnJIcT_jUbcnl-uJ-U4bSHC-Of-hsPxXaxsdzFWO8v2LQIfoJNm4X04h8kClKn6Sz5ZvXqy3eGdip&currency=GBP"></script>
     <style>
         video {
             width: 100%;
@@ -623,7 +623,7 @@
 
                 </div>
                 <div style="color: red; font-weight: 700; font-size: 1.2rem;">{{ e }}</div><br>
-                <div class="captcha-field"></div>
+                <!-- <div class="captcha-field"></div>
                 <script src="https://www.google.com/recaptcha/api.js?render=6Le0DPgUAAAAACzTR8o8KvhqHefKF-d8bXImhWmz"></script>
                 <script>
                 grecaptcha.ready(function() {
@@ -632,7 +632,7 @@
                         $('.next-btn').prop('disabled', false);
                     });
                 });
-                </script>
+                </script> -->
                  <div class="container text-center mx-auto" style="margin-top: 30px;">
                         <div class="row">
                             <div class="form-check mr-auto text-left">
@@ -641,7 +641,7 @@
                                   I understand and agree that I am entering a health based competition to win a High-end 316Ti Surgical Steel and Titanium Executive Chef Cookware Set.  Better known as the Executive Set with a cost price of £20,395 by the piece.  Each entry is charged at £22.  If fewer than 4,500 tickets sold by closing date, a cash prize alternative will be given. Cash prize will be 25% of total ticket sales, excluding transaction fees.  I have read the T&Cs and exclusions that apply.
                                 </label>
                             </div>
-                                <button type="submit" disabled=true class="mx-auto text-center enter_now_btn next-btn btn btn-dark" style="margin-top: 30px; background-color: orangered">NEXT</button>
+                                <button type="submit" class="mx-auto text-center enter_now_btn next-btn btn btn-dark" style="margin-top: 30px; background-color: orangered">NEXT</button>
                         </div><br>
                     </div>
             </form>
@@ -686,7 +686,7 @@
                    agree: $('.agree').val(),
                    entries: parseInt(en),
                    eating_healthier: eating_status(),
-                   grecaptcharesponse: $('#g-recaptcha-response').val(),
+                //    grecaptcharesponse: $('#g-recaptcha-response').val(),
                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
                },
                success: function (data) {

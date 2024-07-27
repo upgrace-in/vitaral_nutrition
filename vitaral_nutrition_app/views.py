@@ -17,7 +17,7 @@ from django.conf import settings
 import urllib.request
 import json
 
-GOOGLE_RECAPTCHA_SECRET_KEY = '6Le0DPgUAAAAAIVCTrJ0pTmFedS-vb4gJ-sPwX-A'
+# GOOGLE_RECAPTCHA_SECRET_KEY = '6Le0DPgUAAAAAIVCTrJ0pTmFedS-vb4gJ-sPwX-A'
 
 def check_code(request):
     if request.method == 'POST':
@@ -109,21 +109,21 @@ def initial_form(request):
         email = request.POST['id_email']
         agree = request.POST['agree']
         set_name = request.POST['set_name']
-        recaptcha_response = request.POST['g-recaptcha-response']
+        # recaptcha_response = request.POST['g-recaptcha-response']
 
-        url = 'https://www.google.com/recaptcha/api/siteverify'
-        payload = {
-            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
-            'response': recaptcha_response
-        }
-        data = urllib.parse.urlencode(payload).encode()
-        req = urllib.request.Request(url, data=data)
-        response = urllib.request.urlopen(req)
-        result = json.loads(response.read().decode())
+        # url = 'https://www.google.com/recaptcha/api/siteverify'
+        # payload = {
+        #     'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
+        #     'response': recaptcha_response
+        # }
+        # data = urllib.parse.urlencode(payload).encode()
+        # req = urllib.request.Request(url, data=data)
+        # response = urllib.request.urlopen(req)
+        # result = json.loads(response.read().decode())
 
-        if (not result['success']) or (not result['action'] == 'initial'):
-            e = 'Invalid reCAPTCHA. Please try again.'
-            return render(request, 'vitaral_nutrition_app/registration.html', {'e': e})
+        # if (not result['success']) or (not result['action'] == 'initial'):
+        #     e = 'Invalid reCAPTCHA. Please try again.'
+        #     return render(request, 'vitaral_nutrition_app/registration.html', {'e': e})
 
 
 
@@ -298,21 +298,22 @@ def participators_details(request):
         region = request.POST['region']
         eating_healthier = request.POST['eating_healthier']
         agree = request.POST['agree']
-        recaptcha_response = request.POST['grecaptcharesponse']
 
-        url = 'https://www.google.com/recaptcha/api/siteverify'
-        payload = {
-            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
-            'response': recaptcha_response
-        }
-        data = urllib.parse.urlencode(payload).encode()
-        req = urllib.request.Request(url, data=data)
-        response = urllib.request.urlopen(req)
-        result = json.loads(response.read().decode())
+        # recaptcha_response = request.POST['grecaptcharesponse']
 
-        if (not result['success']) or (not result['action'] == 'signup'):
-            e = 'Invalid reCAPTCHA. Please try again.'
-            return render(request, 'vitaral_nutrition_app/registration.html', {'e': e})
+        # url = 'https://www.google.com/recaptcha/api/siteverify'
+        # payload = {
+        #     'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
+        #     'response': recaptcha_response
+        # }
+        # data = urllib.parse.urlencode(payload).encode()
+        # req = urllib.request.Request(url, data=data)
+        # response = urllib.request.urlopen(req)
+        # result = json.loads(response.read().decode())
+
+        # if (not result['success']) or (not result['action'] == 'signup'):
+        #     e = 'Invalid reCAPTCHA. Please try again.'
+        #     return render(request, 'vitaral_nutrition_app/registration.html', {'e': e})
 
         u_name = User.objects.filter(username=username)
         e_mail = User.objects.filter(email=email)
@@ -378,21 +379,26 @@ def user_login(request):
     if request.method == 'POST':
         id_username = request.POST['id_username1']
         id_password = request.POST['id_password1']
-        recaptcha_response = request.POST['g-recaptcha-response']
 
-        url = 'https://www.google.com/recaptcha/api/siteverify'
-        payload = {
-            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
-            'response': recaptcha_response
-        }
-        data = urllib.parse.urlencode(payload).encode()
-        req = urllib.request.Request(url, data=data)
-        response = urllib.request.urlopen(req)
-        result = json.loads(response.read().decode())
+        # print(id_username, id_password)
 
-        if (not result['success']) or (not result['action'] == 'signup'):
-            e = 'Invalid reCAPTCHA. Please try again.'
-            return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
+        # reCaptcha Code Starts
+        # recaptcha_response = request.POST['g-recaptcha-response']
+
+        # url = 'https://www.google.com/recaptcha/api/siteverify'
+        # payload = {
+        #     'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
+        #     'response': recaptcha_response
+        # }
+        # data = urllib.parse.urlencode(payload).encode()
+        # req = urllib.request.Request(url, data=data)
+        # response = urllib.request.urlopen(req)
+        # result = json.loads(response.read().decode())
+
+        # if (not result['success']) or (not result['action'] == 'signup'):
+        #     e = 'Invalid reCAPTCHA. Please try again.'
+        #     return render(request, 'vitaral_nutrition_app/user_form.html', {'e': e})
+        # reCaptcha Code Ends
 
         i = 0
         if '@' in id_username:
